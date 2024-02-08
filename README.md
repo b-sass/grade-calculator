@@ -1,4 +1,3 @@
 # grade-calculator
 
-please work sldkfjlsdkjflsjfdlskfj
-adsd
+An app to calculate the final grade for university students.
