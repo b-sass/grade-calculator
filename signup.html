@@ -27,13 +27,14 @@
     </div>
 
     <!-- main page -->
-    <div class="container-xxl border-warning">
+    <div class="container-xxl">
         <div class="row align-items-center">
             <div class="col-md-8 col-lg-6">
                 <h5 class="display-3 text-center mb-5">Sign up</h5>
                 <form>
                     <div id="emailDiv" class="mb-3">
-                        <div class="form-text mb-2">By signing up, you agree to the <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a>.</div>
+                        <div class="form-text mb-2">By signing up, you agree to the <a href="#">Terms of use</a> and <a
+                                href="#">Privacy Policy</a>.</div>
                         <label for="emailInput" class="form-label">Email</label>
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
@@ -45,10 +46,14 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="passwordInput">
                     </div>
-                    <a id ="continueButton" href="#" class="btn btn-primary">Continue</a> <!-- btn-primary will be large/black/rounded (as per reference image) when customising stylesheet (should not be defined here)-->
-                    <a id ="signinButton" type="submit" href="login.html" class="btn btn-primary d-none">Sign in</a> <!-- btn-primary will be large/black/rounded (as per reference image) when customising stylesheet (should not be defined here)-->
+                    <div class="row align-items-center">
+                        <a id="continueButton" href="#" class="col btn btn-primary">Continue</a>
+                        <!-- btn-primary will be large/black/rounded (as per reference image) when customising stylesheet (should not be defined here)-->
+                        <a id="signinButton" type="submit" href="login.html" class="col btn btn-primary d-none">Sign in</a>
+                        <!-- btn-primary will be large/black/rounded (as per reference image) when customising stylesheet (should not be defined here)-->
+                    </div>
                 </form>
-                <h6 class="text-center">Already have an account? <a href="login.html">Log in</a></h6>
+                <h6 class="text-center mt-3">Already have an account? <a href="login.html">Log in</a></h6>
             </div>
             <div class="d-none d-md-block col-md-4 col-lg-6">
                 <img class="img-fluid" src="/images/lens-flare.jpg" alt="Flare Login Image">
