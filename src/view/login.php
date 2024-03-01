@@ -14,13 +14,13 @@
     <!-- top bar -->
     <div id="topBar" class="container-fluid py-3 border border-2">
         <div class="row justify-content-between align-items-center">
-            <a href="signup.html" class="col text-start d-none d-md-block text-decoration-none text-muted">
+            <a href="signup.php" class="col text-start d-none d-md-block text-decoration-none text-muted">
                 <i class="bi bi-arrow-left"></i>Back
                 <i class="bi bi-calculator"></i>[logo placeholder]
             </a>
             <!-- maybe d-none d-md-block not neccessary (test with small screen size) -->
             <div class="col text-end">
-                <h6><a href="signup.html" class="text-decoration-none text-muted">Create an account</a></h6> <!-- this <a> style should probably be defined elsewhere/use some other class rather than add text-decoration-none text-muted each time -->
+                <h6><a href="signup.php" class="text-decoration-none text-muted">Create an account</a></h6> <!-- this <a> style should probably be defined elsewhere/use some other class rather than add text-decoration-none text-muted each time -->
             </div>
         </div>
     </div>
@@ -30,14 +30,14 @@
         <div class="row align-items-center">
             <div class="col-md-8 col-lg-6">
                 <h5 class="display-3 text-center mb-5">Login</h5>
-                <form>
+                <form method="post" action="../controller/userLogin.php">
                     <div id="emailDiv" class="mb-3">
                         <label for="emailInput" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                     </div>
                     <div id="passwordDiv" class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="passwordInput">
+                        <input type="password" name="password" class="form-control" id="passwordInput">
                     </div>
                     <div class="row align-items-center">
                         <button id="loginButton" type="submit" href="#" class="btn btn-primary row">Login</button>
@@ -52,10 +52,10 @@
                             product, feature updates, events and marketing promotions.</label>
                     </div>
                 </form>
-                <h6 class="text-center">Don't have an account? <a href="signup.html">Sign up</a></h6>
+                <h6 class="text-center">Don't have an account? <a href="./signup.php">Sign up</a></h6>
             </div>
             <div class="d-none d-md-block col-md-4 col-lg-6">
-                <img class="img-fluid" src="/images/lens-flare.jpg" alt="Flare Login Image">
+                <img class="img-fluid" src="../../images/lens-flare.jpg" alt="Flare Login Image">
             </div>
         </div>
     </div>

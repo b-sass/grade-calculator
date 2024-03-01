@@ -21,7 +21,7 @@
                     data-bs-toggle="dropdown" aria-expanded="false">
                     English (not implemented)
                 </button>
-                <a href="login.html" class="btn btn-secondary">Log in</a>
+                <a href="login.php" class="btn btn-secondary">Log in</a>
             </div>
         </div>
     </div>
@@ -31,32 +31,32 @@
         <div class="row align-items-center">
             <div class="col-md-8 col-lg-6">
                 <h5 class="display-3 text-center mb-5">Sign up</h5>
-                <form>
+                <form method="post" action="../controller/userLogin.php">
                     <div id="emailDiv" class="mb-3">
                         <div class="form-text mb-2">By signing up, you agree to the <a href="#">Terms of use</a> and <a
                                 href="#">Privacy Policy</a>.</div>
                         <label for="emailInput" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
                     </div>
                     <div id="usernameDiv" class="mb-3 d-none">
                         <label for="username" class="form-label">Username</label>
-                        <input type="text" class="form-control" id="usernameInput">
+                        <input type="text" name="username" class="form-control" id="usernameInput" required>
                     </div>
                     <div id="passwordDiv" class="mb-3 d-none">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="passwordInput">
+                        <input type="password" name="password" class="form-control" id="passwordInput" required>
                     </div>
                     <div class="row align-items-center">
                         <a id="continueButton" href="#" class="col btn btn-primary">Continue</a>
                         <!-- btn-primary will be large/black/rounded (as per reference image) when customising stylesheet (should not be defined here)-->
-                        <a id="signinButton" type="submit" href="login.html" class="col btn btn-primary d-none">Sign in</a>
+                        <input id="signinButton" type="submit" class="col btn btn-primary d-none" value="Sign In">
                         <!-- btn-primary will be large/black/rounded (as per reference image) when customising stylesheet (should not be defined here)-->
                     </div>
                 </form>
-                <h6 class="text-center mt-3">Already have an account? <a href="login.html">Log in</a></h6>
+                <h6 class="text-center mt-3">Already have an account? <a href="login.php">Log in</a></h6>
             </div>
             <div class="d-none d-md-block col-md-4 col-lg-6">
-                <img class="img-fluid" src="/images/lens-flare.jpg" alt="Flare Login Image">
+                <img class="img-fluid" src="../../images/lens-flare.jpg" alt="Flare Login Image">
             </div>
         </div>
     </div>
