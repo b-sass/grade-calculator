@@ -42,7 +42,7 @@
             <a href="#" class="text-muted">Forgot password?</a>
           </div>
           <!-- Button for login !-->
-          <div class="align-items-center" aria-label="button in need of help">
+          <div class="align-items-center row" aria-label="button in need of help">
             <button id="loginButton" type="submit" href="#" class="btn btn-primary col">Login</button>
           </div>
           <div class="my-3 form-check">
