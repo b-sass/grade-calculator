@@ -1,0 +1,21 @@
+// Changes from the bootstrap's defaults
+// Since bootstrap's config uses the !default tag for setting variable, these will only
+// be set if no value has been set yet (i.e. won't override custom values set below)
+$primary:                 #000;
+$btn-border-radius:         25px;
+$form-label-font-weight:    300;
+
+// $headings-font-weight:      700; // is for h1/2/3 etc not display-x
+
+// FONT
+$display-font-weight: 100;
+.display-1,
+.display-2,
+.display-3,
+.display-4 {
+    font-family: verdana, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+
+// import bootstrap (all other defaults)
+@import '../node_modules/bootstrap/scss/bootstrap';
