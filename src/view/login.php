@@ -31,12 +31,12 @@
                     <div id="emailDiv" class="mb-3">
                         <label for="emailInput" class="form-label">Email/Username</label>
                         <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                        <a href="#" class="text-muted">Forgot Username?</a>
+                        <a href="#" class="fw-lighter text-decoration-none">Forgot Username?</a>
                     </div>
                     <div id="passwordDiv" class="mb-3">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" name="password" class="form-control" id="passwordInput">
-                        <a href="#" class="text-muted">Forgot password?</a>
+                        <a href="#" class="fw-lighter text-decoration-none">Forgot password?</a>
                     </div>
                     <div class="row align-items-center">
                         <button id="loginButton" type="submit" href="#" class="btn btn-primary col">Login</button>
