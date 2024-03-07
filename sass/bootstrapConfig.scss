@@ -1,0 +1,140 @@
+// Changes from the bootstrap's defaults
+// Since bootstrap's config uses the !default tag for setting variable, these will only
+// be set if no value has been set yet (i.e. won't override custom values set below)
+$primary: #000;
+$btn-border-radius: 25px;
+$form-label-font-weight: 300;
+
+// $headings-font-weight:      700; // is for h1/2/3 etc not display-x
+// FONT
+$display-font-weight: 100;
+.display-1,
+.display-2,
+.display-3,
+.display-4 {
+  font-family: verdana, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+// Jay's Changes
+body {
+  overflow: hidden;
+}
+
+[id="topBar"] {
+  border: none !important;
+  border-bottom: 2px solid #dee2e6 !important;
+  background: white;
+  z-index: 1;
+}
+
+.row {
+  flex-wrap: nowrap !important;
+}
+
+[id="image-holder"] {
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+}
+
+// Right side image
+[id="stock-image"] {
+  width: 100vh !important;
+  height: 100% !important;
+  border-left: 2px solid #dee2e6;
+}
+
+[aria-label="button in need of help"] {
+  display: flex;
+  justify-content: center;  
+}
+
+[id="login"] {
+  position: relative;
+  left: 22%;
+  transform: translate(-50%);
+}
+
+@media (max-width: 991px) {
+  [id="image-holder"] {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    top: 46.5vh;
+    transform: translate(-50%, -50%);
+
+    z-index: 0;
+  }
+
+  [id="stock-image"] {
+    //max-width: 150% !important;
+    //height: 100% !important;
+    border-left: 0px solid #dee2e6;
+    opacity: 0.2;
+    filter: blur(3px);
+  }
+
+  [id="login"],
+  [id="topBar"] {
+    z-index: 1;
+  }
+
+  [id="login"] {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 10px;
+  }
+}
+
+// Portrait Mode
+@media only screen and (orientation: portrait) {
+  [id="image-holder"] {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    position: relative;
+    left: 50%;
+    top: 50vh;
+    transform: translate(-50%, -50%);
+
+    z-index: 0;
+  }
+
+  [id="stock-image"] {
+    //max-width: 100% !important;
+    height: 100vh !important;
+    border-left: 0px solid #dee2e6;
+    opacity: 0.2;
+    filter: blur(3px);
+  }
+
+  [id="login"],
+  [id="topBar"] {
+    z-index: 1;
+  }
+
+  [id="login"] {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media screen and (max-width: 1399px) { 
+  [id="login"] {
+  position: relative;
+  left: 25%;
+  transform: translate(-50%);
+  }
+}
