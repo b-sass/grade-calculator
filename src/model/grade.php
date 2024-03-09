@@ -1,10 +1,10 @@
 <?php
 
-class User {
+class Grade {
 	private $id;
-	private $email;
-	private $username;
-	private $password;
+	private $assignmentId;
+	private $scenarioId;
+	private $obtainedGrade;
 
 	function __get($name) {
 		return $this->$name;
