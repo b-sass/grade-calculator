@@ -1,11 +1,11 @@
 <?php
 
-class User {
-	private $id;
-	private $email;
-	private $username;
-	private $password;
-
+class Assignment {
+	private $assignmentID;
+	private $moduleCode;
+	private $assignmentName;
+	private $assignmentWeight;
+	
 	function __get($name) {
 		return $this->$name;
 	}

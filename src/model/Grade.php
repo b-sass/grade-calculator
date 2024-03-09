@@ -1,9 +1,9 @@
 <?php
 
 class Grade {
-	private $id;
-	private $assignmentId;
-	private $scenarioId;
+	private $gradeID;
+	private $assignmentID;
+	private $scenarioID;
 	private $obtainedGrade;
 
 	function __get($name) {
