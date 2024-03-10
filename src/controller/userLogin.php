@@ -1,6 +1,6 @@
 <?php
-require_once("./dataAccess.php");
-require_once("../model/user.php");
+require_once("../model/data/dataAccess.php");
+require_once("../model/User.php");
 
 // Get both email and password from the login form
 $email = $_REQUEST["email"];
@@ -16,7 +16,7 @@ else{
 
 function login($pdo, $email, $pass) {
 	// Check if a user with the provided email and password exists
-	$sql = "SELECT * FROM Users WHERE email = ? AND password = ?";
+	$sql = "SELECT * FROM User WHERE email = ? AND password = ?";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email, $pass]);
 	$profile = $stmt->fetchAll(); // Will return an empty array if the user doesn't exist
