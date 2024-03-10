@@ -27,7 +27,7 @@ function login($pdo, $email, $pass) {
 	}
 	else {
 		// If they don't, go to the signup page
-		header("Location: ../../signup.php");
+		header("Location: ../view/signup_view.php");
 		exit(); // not calling exit() after header() can cause unintended behaviour
 	}
 }
@@ -41,7 +41,7 @@ function signup($pdo, $email, $username, $pass) {
 	
 	if(sizeof($profile) == 1) {
 		// If it does, go to the login page.
-		header("Location: ../view/login.php");
+		header("Location: ../view/login_view.php");
 		exit();
 	}
 
@@ -51,7 +51,7 @@ function signup($pdo, $email, $username, $pass) {
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email, $username, $pass]);
 	// Then, go back to login
-	header("Location: ../view/login.php");
+	header("Location: ../view/login_view.php");
 	exit();
 }
 	

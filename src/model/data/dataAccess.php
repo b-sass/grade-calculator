@@ -1,9 +1,6 @@
 <?php 
-$host = "localhost";
-$user = "flare";
-$pass = "flare";
-$dbname = "testing";
 
+require_once(dirname(__FILE__) ."dbSecrets.php");
 
 $dsn = "mysql:host=". $host .";port=3306;dbname=". $dbname;
 
