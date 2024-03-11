@@ -191,9 +191,49 @@
                 <div class="bg-light p-3 rounded" id="modules-section">
                     <h4 id="modules-title" class="mb-3">Modules</h4>
 
-                    <div class="mb-3" id="module-list">
+                    <div class="mb-3 modules" id="module-list-4">
                         <!-- Repeat this block for each module -->
-                        <?php foreach ($modules as $m): ?>
+                        <?php foreach ($modules4 as $m): ?>
+                        <div class="row g-3 align-items-center module-item" id="module1">
+                            <div class="col-md-8">
+                                <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="p-2 rounded text-center" id="module1-grade">Grade</div>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="../controller/assessment.php">
+                                    <button class="btn btn-outline-secondary w-100" id="module1-edit-btn">Edit</button>
+                                </a>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
+                        <!-- End of module block -->
+                    </div>
+
+                    <div class="mb-3 modules" id="module-list-5">
+                        <!-- Repeat this block for each module -->
+                        <?php foreach ($modules5 as $m): ?>
+                        <div class="row g-3 align-items-center module-item" id="module1">
+                            <div class="col-md-8">
+                                <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?></div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="p-2 rounded text-center" id="module1-grade">Grade</div>
+                            </div>
+                            <div class="col-md-2">
+                                <a href="../controller/assessment.php">
+                                    <button class="btn btn-outline-secondary w-100" id="module1-edit-btn">Edit</button>
+                                </a>
+                            </div>
+                        </div>
+                        <?php endforeach ?>
+                        <!-- End of module block -->
+                    </div>
+
+                    <div class="mb-3 modules" id="module-list-6">
+                        <!-- Repeat this block for each module -->
+                        <?php foreach ($modules6 as $m): ?>
                         <div class="row g-3 align-items-center module-item" id="module1">
                             <div class="col-md-8">
                                 <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?></div>
