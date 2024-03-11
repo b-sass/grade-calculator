@@ -63,4 +63,23 @@ function setUserAssessmentGrade($scenarioId, $assignmentId, $grade)
 //   $users = $statement->fetchAll(PDO::FETCH_CLASS, 'Customer');
 //   return $users;
 // }
-?>
+
+// returns all modules for a given level e.g. level 4 (year 1)
+function getAllModulesForLevel($level) {
+    global $pdo;
+    $sql = "SELECT * FROM Module WHERE level = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$level]);
+    $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
+    return $modules;
+}
+
+function getUserModulesForLevel($user, $level) {
+    global $pdo;
+    $moduleForLevel = "SELECT moduleCode FROM Module WHERE level = ?";
+    $sql = "SELECT * FROM ChosenModule WHERE userID = ? AND moduleCode IN ($moduleForLevel);";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$user->userID, $level]);
+    $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
+
+}
