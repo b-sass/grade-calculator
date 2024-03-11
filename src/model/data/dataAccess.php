@@ -43,6 +43,14 @@ function setUserAssessmentGrade($scenarioId, $assignmentId, $grade)
     $createGradeStatement = $pdo->prepare("INSERT INTO Grades (assignmentId, scenarioId, obtainedGrade) VALUES (?, ?, ?)");
     $createGradeStatement->execute([$assignmentId, $scenarioId, $grade]);
 }
+function displayModules()
+{
+    global $pdo;
+    echo("echoing stuff");
+    $statement = $pdo->query('SELECT * FROM User');
+    $returnStatement = $statement->fetchAll(PDO::FETCH_OBJ);
+    return $returnStatement;
+}
 
 // Random example
 // INSERT INTO Employees (FirstName, LastName, Email)

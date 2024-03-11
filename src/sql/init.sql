@@ -5,13 +5,14 @@ CREATE TABLE IF NOT EXISTS User (
 	username VARCHAR(40) NOT NULL,
 	email VARCHAR(40) NOT NULL,
 	password VARCHAR(64) NOT NULL,
+    isAdmin TINYINT(1),
 	PRIMARY KEY (userID)
 );
 
 CREATE TABLE IF NOT EXISTS Module (
 	moduleCode VARCHAR(10),
-	moduleName VARCHAR(40),
-	-- level INT(1) -- NOT NEEDED
+	moduleName VARCHAR(60),
+    moduleLevel INT(1),
 	PRIMARY KEY (moduleCode)
 );
 
@@ -26,9 +27,9 @@ CREATE TABLE IF NOT EXISTS ChosenModule (
 CREATE TABLE IF NOT EXISTS Assignment (
 	assignmentID INT(6) NOT NULL AUTO_INCREMENT,
 	moduleCode VARCHAR(10) NOT NULL,
-	assignmentName VARCHAR(40),
+	assignmentName VARCHAR(60),
 	assignmentWeight DEC(5,2),
-	-- sequenceIndex INT(2) -- NOT NEEDED
+	assignmentSequenceIndex INT(2),
 	FOREIGN KEY (moduleCode) REFERENCES Module(moduleCode),
 	PRIMARY KEY (assignmentID)
 );
