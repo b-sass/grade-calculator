@@ -74,12 +74,11 @@ function getAllModulesForLevel($level) {
     return $modules;
 }
 
-function getUserModulesForLevel($user, $level) {
+function getUserModulesForLevel($userID, $level) {
     global $pdo;
-    $moduleForLevel = "SELECT moduleCode FROM Module WHERE level = ?";
-    $sql = "SELECT * FROM ChosenModule WHERE userID = ? AND moduleCode IN ($moduleForLevel);";
+    $sql = "SELECT Module.moduleCode, moduleName, level FROM ChosenModule JOIN Module ON ChosenModule.moduleCode=Module.moduleCode WHERE userID=? AND level=?";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute([$user->userID, $level]);
+    $stmt->execute([$userID, $level]);
     $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
-
+    return $modules;
 }
