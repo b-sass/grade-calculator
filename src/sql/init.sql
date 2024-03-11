@@ -5,13 +5,14 @@ CREATE TABLE User (
 	username VARCHAR(40) NOT NULL,
 	email VARCHAR(40) NOT NULL,
 	password VARCHAR(64) NOT NULL,
+    isAdmin TINYINT(1),
 	PRIMARY KEY (userID)
 );
 
-CREATE TABLE Module (
-	moduleCode VARCHAR(10) NOT NULL,
-	moduleName VARCHAR(60) NOT NULL,
-	level INT(1) NOT NULL,
+CREATE TABLE IF NOT EXISTS Module (
+	moduleCode VARCHAR(10),
+	moduleName VARCHAR(60),
+    moduleLevel INT(1),
 	PRIMARY KEY (moduleCode)
 );
 
@@ -25,10 +26,10 @@ CREATE TABLE ChosenModule (
 
 CREATE TABLE Assignment (
 	assignmentID INT(6) NOT NULL AUTO_INCREMENT,
-	assignmentName VARCHAR(60) NOT NULL,
-	assignmentWeight DEC(5,2) NOT NULL,
-	sequenceIndex INT(2),
 	moduleCode VARCHAR(10) NOT NULL,
+	assignmentName VARCHAR(60),
+	assignmentWeight DEC(5,2),
+	assignmentSequenceIndex INT(2),
 	FOREIGN KEY (moduleCode) REFERENCES Module(moduleCode),
 	PRIMARY KEY (assignmentID)
 );
