@@ -123,7 +123,7 @@
                         <input type="password" name="password" class="form-control" id="passwordInput" required>
                     </div>
                     <div class="row align-items-center" id="signup-action-container">
-                        <a href="#" class="col btn btn-primary d-none" id="continueButton">Continue</a>
+                        <a href="#" class="col btn btn-primary" id="continueButton">Continue</a>
                         <input type="submit" class="col btn btn-primary d-none" id="signinButton" value="Sign In">
                     </div>
                 </form>
@@ -138,7 +138,7 @@
 
     <script>
         document.getElementById('continueButton').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent the default anchor behavior
+            // event.preventDefault(); // Prevent the default anchor behavior
             document.getElementById('signup-username-container').classList.remove('d-none');
             document.getElementById('signup-password-container').classList.remove('d-none');
             document.getElementById('continueButton').classList.add('d-none');

@@ -167,7 +167,6 @@
 </head>
 
 <body>
-
     <?php include "../view/navbar.php"; ?>
 
 

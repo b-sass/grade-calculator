@@ -97,11 +97,14 @@
                     <a class="nav-link" href="#">FAQs</a>
                 </li>
             </ul>
-
-            <form class="d-flex">
-                <a href="../controller/login.php"><button class="btn btn-outline-success me-2" type="button">Login</button></a>
-                <a href="../controller/signup.php"><button class="btn btn-success" type="button">Signup</button></a>
-            </form>
+            <?php if ($_SESSION["loggedInUser"] == null) { ?>
+                <form class="d-flex">
+                    <a href="../controller/login.php"><button class="btn btn-outline-success me-2" type="button">Login</button></a>
+                    <a href="../controller/signup.php"><button class="btn btn-success" type="button">Signup</button></a>
+                </form>
+            <?php } else { ?>
+                <p><?= $_SESSION["loggedInUser"]->email ?></p>
+            <?php } ?>
         </div>
     </div>
 </nav>
