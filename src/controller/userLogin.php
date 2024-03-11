@@ -1,6 +1,7 @@
 <?php
 require_once("../model/data/dataAccess.php");
 require_once("../model/User.php");
+session_start();
 
 // Get both email and password from the login form
 $email = $_REQUEST["email"];
@@ -19,40 +20,38 @@ function login($pdo, $email, $pass) {
 	$sql = "SELECT * FROM User WHERE email = ? AND password = ?";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email, $pass]);
-	$profile = $stmt->fetchAll(); // Will return an empty array if the user doesn't exist
+	$profile = $stmt->fetch(PDO::FETCH_CLASS, "User"); // Will return null if the user doesn't exist
 	
-	if(sizeof($profile) == 1) {
+	if($profile != null) {
 		// If they do, log in
+		$_SESSION["loggedInUser"] = $profile;
 		require_once("../view/dashboard_view.php");
 	}
 	else {
 		// If they don't, go to the signup page
-		header("Location: ../view/signup_view.php");
-		exit(); // not calling exit() after header() can cause unintended behaviour
+		require_once("../view/signup_view.php");
 	}
 }
 
 function signup($pdo, $email, $username, $pass) {
 	// Check if an account with the provided email exists
-	$sql = "SELECT * FROM Users WHERE email = ?";
+	$sql = "SELECT * FROM User WHERE email = ?";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email]);
 	$profile = $stmt->fetchAll();
 	
 	if(sizeof($profile) == 1) {
 		// If it does, go to the login page.
-		header("Location: ../view/login_view.php");
-		exit();
+		require_once("../view/login_view.php");
 	}
 
 	// Insert a user with the provided details to the Users table
-	$sql = "INSERT INTO Users (email, username, password)
+	$sql = "INSERT INTO User (email, username, password)
 			VALUES (?, ?, ?)";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email, $username, $pass]);
 	// Then, go back to login
-	header("Location: ../view/login_view.php");
-	exit();
+	require_once("../view/login_view.php");
 }
 	
 ?>

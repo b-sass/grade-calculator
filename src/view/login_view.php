@@ -133,7 +133,7 @@
                 <form method="post" action="../controller/userLogin.php" id="login-form">
                     <!-- Input for user details -->
                     <div class="mb-3" id="user-email-container">
-                        <label for="userEmail" class="form-label" id="email-label">Email/Username</label>
+                        <label for="userEmail" class="form-label" id="email-label">Email</label>
                         <input type="email" name="email" class="form-control" id="userEmail" aria-describedby="emailHelp">
                         <div id="forgot-username-link" class="form-text">
                             <a href="#" class="text-muted">Forgot Username?</a>

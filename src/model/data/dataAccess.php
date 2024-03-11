@@ -71,4 +71,22 @@ function displayModules()
 //   $users = $statement->fetchAll(PDO::FETCH_CLASS, 'Customer');
 //   return $users;
 // }
-?>
+
+// returns all modules for a given level e.g. level 4 (year 1)
+function getAllModulesForLevel($level) {
+    global $pdo;
+    $sql = "SELECT * FROM Module WHERE level = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$level]);
+    $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
+    return $modules;
+}
+
+function getUserModulesForLevel($userID, $level) {
+    global $pdo;
+    $sql = "SELECT Module.moduleCode, moduleName, level FROM ChosenModule JOIN Module ON ChosenModule.moduleCode=Module.moduleCode WHERE userID=? AND level=?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userID, $level]);
+    $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
+    return $modules;
+}

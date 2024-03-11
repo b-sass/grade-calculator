@@ -1,3 +1,3 @@
 <?php
 // require_once ("./src/view/login.php"); // page start
-header("Location: ./src/controller/login.php");
+header("Location: ./src/controller/home.php");

@@ -167,7 +167,6 @@
 </head>
 
 <body>
-
     <?php include "../view/navbar.php"; ?>
 
 
@@ -193,9 +192,10 @@
 
                     <div class="mb-3" id="module-list">
                         <!-- Repeat this block for each module -->
+                        <?php foreach ($modules as $m): ?>
                         <div class="row g-3 align-items-center module-item" id="module1">
                             <div class="col-md-8">
-                                <div class="p-2 rounded" id="module1-name">Module Name</div>
+                                <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?></div>
                             </div>
                             <div class="col-md-2">
                                 <div class="p-2 rounded text-center" id="module1-grade">Grade</div>
@@ -206,6 +206,7 @@
                                 </a>
                             </div>
                         </div>
+                        <?php endforeach ?>
                         <!-- End of module block -->
                     </div>
                 </div>
