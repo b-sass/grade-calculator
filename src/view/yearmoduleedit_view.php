@@ -119,7 +119,7 @@
 <body>
 
     <?php include "../view/navbar.php"; ?>
-
+    
     <div class="container my-3" id="modules-container">
         <h2 class="mb-4" id="year-modules-title">Year X Modules</h2>
         <form id="modules-form">
@@ -127,40 +127,40 @@
             <div class="mb-3" id="module-1-container">
                 <label for="module1-dropdown" class="form-label" id="module-1-label">Module 1</label>
                 <select class="form-select" id="module1-dropdown">
-                    <option selected>Choose Module</option>
-                    <option value="1">Module A</option>
-                    <option value="2">Module B</option>
-                    <option value="3">Module C</option>
+                    <option value="" disabled selected>Choose Module</option>
+                    <?php foreach ($modules as $m): ?>
+                    <option value=<?= $m->moduleCode ?>><?= $m->moduleName ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <!-- Dropdown 2 -->
             <div class="mb-3" id="module-2-container">
                 <label for="module2-dropdown" class="form-label" id="module-2-label">Module 2</label>
                 <select class="form-select" id="module2-dropdown">
-                    <option selected>Choose Module</option>
-                    <option value="1">Module A</option>
-                    <option value="2">Module B</option>
-                    <option value="3">Module C</option>
+                    <option value="" disabled selected>Choose Module</option>
+                    <?php foreach ($modules as $m): ?>
+                    <option value=<?= $m->moduleCode ?>><?= $m->moduleName ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <!-- Dropdown 3 -->
             <div class="mb-3" id="module-3-container">
                 <label for="module3-dropdown" class="form-label" id="module-3-label">Module 3</label>
                 <select class="form-select" id="module3-dropdown">
-                    <option selected>Choose Module</option>
-                    <option value="1">Module A</option>
-                    <option value="2">Module B</option>
-                    <option value="3">Module C</option>
+                <option value="" disabled selected>Choose Module</option>
+                    <?php foreach ($modules as $m): ?>
+                    <option value=<?= $m->moduleCode ?>><?= $m->moduleName ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <!-- Dropdown 4 -->
             <div class="mb-3" id="module-4-container">
                 <label for="module4-dropdown" class="form-label" id="module-4-label">Module 4</label>
                 <select class="form-select" id="module4-dropdown">
-                    <option selected>Choose Module</option>
-                    <option value="1">Module A</option>
-                    <option value="2">Module B</option>
-                    <option value="3">Module C</option>
+                    <option value="" disabled selected>Choose Module</option>
+                    <?php foreach ($modules as $m): ?>
+                    <option value=<?= $m->moduleCode ?>><?= $m->moduleName ?></option>
+                    <?php endforeach ?>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary" id="update-modules-button">Update</button>
