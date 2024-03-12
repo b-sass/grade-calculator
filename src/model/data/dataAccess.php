@@ -20,7 +20,7 @@ function isValidGrade($grade) {
     }
     return ($grade >= 0 && $grade<= 100);
 }
-function setGrade($userID, $assignmentID, $grade) {
+function setOrAddGrade($userID, $assignmentID, $grade) {
     if (!isValidGrade($grade)) {
         return 1;
     }
@@ -71,11 +71,20 @@ function getAllModulesForLevel($level) {
 
 function getUserModulesForLevel($userID, $level) {
     global $pdo;
-    $sql = "SELECT Module.moduleCode, moduleName, level FROM ChosenModule JOIN Module ON ChosenModule.moduleCode=Module.moduleCode WHERE userID=? AND level=?";
+    $sql = "SELECT Module.moduleCode, moduleName, level FROM ModuleChoice JOIN Module ON ModuleChoice.moduleCode=Module.moduleCode WHERE userID=? AND level=?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$userID, $level]);
     $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
     return $modules;
+}
+
+function getAssignmentsForModule($moduleCode) {
+    global $pdo;
+    $sql = "SELECT assignmentID, moduleCode, assignmentName, assignmentWeight, assignmentSequenceIndex FROM Assignment WHERE moduleCode = ?";
+    $statement = pdo->prepare($sql);
+    $statement->execute([$moduleCode]);
+    $assignments = $statement->fethAll(PDO::FETCH_CLASS, 'Assignment');
+    return $assignments;
 }
 
 function getLetterGradeFromNumber($grade) {

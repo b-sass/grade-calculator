@@ -27,12 +27,3 @@ FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 (username,email,password,isAdmin);
-
-LOAD DATA LOCAL INFILE '../dataset/scenarioSample.csv'
-INTO TABLE Scenario
-FIELDS TERMINATED BY ','
-ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-IGNORE 1 ROWS
-(userID);
-

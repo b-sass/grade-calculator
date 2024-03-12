@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Module (
 	PRIMARY KEY (moduleCode)
 );
 
-CREATE TABLE ChosenModule (
+CREATE TABLE ModuleChoice (
 	userID INT(6) NOT NULL,
 	moduleCode VARCHAR(10) NOT NULL,
 	FOREIGN KEY (userID) REFERENCES User(userID),
