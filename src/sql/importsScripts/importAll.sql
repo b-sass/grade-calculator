@@ -7,23 +7,32 @@
 -- ngl I didn't really need to make a script for a 1-time operation but I spent 2 hours tinkering the CSVs for it to work so hey
 USE flare;
 
-LOAD DATA LOCAL INFILE 'dataset/Module.csv'
+LOAD DATA LOCAL INFILE '../dataset/Module.csv'
 INTO TABLE Module
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 (moduleCode,moduleName,moduleLevel);
 
-LOAD DATA LOCAL INFILE 'dataset/exampleUsers.csv'
+LOAD DATA LOCAL INFILE '../dataset/Assignment.csv'
+INTO TABLE Assignment
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+(moduleCode,assignmentName,assignmentWeight,assignmentSequenceIndex);
+
+LOAD DATA LOCAL INFILE '../dataset/userSample.csv'
 INTO TABLE User
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 (username,email,password,isAdmin);
 
-LOAD DATA LOCAL INFILE 'dataset/Assignment.csv'
-INTO TABLE Assignment
+LOAD DATA LOCAL INFILE '../dataset/scenarioSample.csv'
+INTO TABLE Scenario
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
-(moduleCode,assignmentName,assignmentWeight,assignmentSequenceIndex);
+IGNORE 1 ROWS
+(userID);
+

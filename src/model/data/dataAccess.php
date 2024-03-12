@@ -25,9 +25,9 @@ function setUserAssignmentGrade($scenarioID, $assignmentID, $grade) {
         return 1;
     }
     global $pdo;
-    $doesGradeExistStatement = $pdo->prepare("SELECT id, assignmentID, scenarioID, obtainedGrade FROM Grades WHERE assignmentID = ? AND scenarioID = ?");
-    $doesGradeExistStatement->execute([$assignmentID, $scenarioID]);
-    $gradeObject = $doesGradeExistStatement->fetchAll(PDO::FETCH_CLASS, 'Grade')[0];
+    $getGradeStatemenet = $pdo->prepare("SELECT id, assignmentID, scenarioID, obtainedGrade FROM Grades WHERE assignmentID = ? AND scenarioID = ?");
+    $getGradeStatemenet->execute([$assignmentID, $scenarioID]);
+    $gradeObject = $getGradeStatemenet->fetchAll(PDO::FETCH_CLASS, 'Grade')[0];
     if ($gradeObject) {
         // update obtained grade
         $gradeID = $gradeObject->gradeID;
@@ -45,7 +45,7 @@ function getCurrentModuleGrade($scenarioID, $moduleCode) {
     /*
     get an array of OBJECTS that have assignmentWeight and obtainedGrade
     */
-    $getModuleGradesStatement = $pdo->prepare("SELECT obtainedGrade, assignmentWeight
+    $getModuleGradesStatement = $pdo->prepare("SELECT Grade.obtainedGrade, Assignment.assignmentWeight
         FROM Grade, Assignment
         WHERE Grade.scenarioID = ?
         AND Grade.assignmentID = Assignment.assignmentID
@@ -84,17 +84,24 @@ function getLetterGradeFromNumber($grade) {
     if (!isValidGrade($grade)) {
         return;
     }
-    // TODO correct the values
-    if ($grade > 80) return "A+";
-    if ($grade > 75) return "A";
-    if ($grade > 70) return "A-";
-    if ($grade > 66) return "B+";
-    if ($grade > 63) return "B";
-    if ($grade > 60) return "B-";
-    if ($grade > 56) return "C+";
-    if ($grade > 53) return "C";
-    if ($grade > 50) return "C-";
-    if ($grade > 40) return "D";
-    if ($grade > 30) return "E";
+
+    $gradeBoundaries = [
+        80 => "A+",
+        75 => "A",
+        70 => "A-",
+        66 => "B+",
+        63 => "B",
+        60 => "B-",
+        56 => "C+",
+        53 => "C",
+        50 => "C-",
+        40 => "D",
+        30 => "E"
+    ];
+    foreach ($gradeBoundaries as $boundary => $letterGrade) {
+        if ($grade > $boundary) {
+            return $letterGrade;
+        }
+    }
     return "F";
 }
