@@ -10,9 +10,10 @@ console.log(menus[0].value);
 
 function hideOption() {
 	// Go through each module and set it to enabled
+	this.selected = true;
 	modules.forEach(option => {
 		if (option.value != "") {
-			option.disabled = false;
+			option.style.display = "initial";
 		}
 	})
 
@@ -21,7 +22,7 @@ function hideOption() {
 	menus.forEach(dropdown => {
 		modules.forEach(option => {
 			if(dropdown.value == option.value) {
-				option.disabled = true;
+				option.style.display = "none";
 			}
 		});
 	})

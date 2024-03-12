@@ -122,12 +122,12 @@
     
     <div class="container my-3" id="modules-container">
         <h2 class="mb-4" id="year-modules-title">Year <?= $level ?> Modules</h2>
-        <form id="modules-form">
+        <form id="modules-form" method="post" action="../controller/updateModules.php">
             <!-- Dropdown 1 -->
             <div class="mb-3" id="module-1-container">
                 <label for="module1-dropdown" class="form-label" id="module-1-label">Module 1</label>
-                <select class="form-select" id="module1-dropdown">
-                    <option value="" disabled selected>Choose Module</option>
+                <select required form="modules-form" class="form-control" id="module1-dropdown" name="module1">
+                    <option value="" selected disabled>Choose Module</option>
                     <?php foreach ($modules as $m): ?>
                     <option value=<?= $m->moduleCode ?>><?= $m->moduleName ?></option>
                     <?php endforeach ?>
@@ -136,7 +136,7 @@
             <!-- Dropdown 2 -->
             <div class="mb-3" id="module-2-container">
                 <label for="module2-dropdown" class="form-label" id="module-2-label">Module 2</label>
-                <select class="form-select" id="module2-dropdown">
+                <select required form="modules-form" class="form-select" id="module2-dropdown" name="module2">
                     <option value="" disabled selected>Choose Module</option>
                     <?php foreach ($modules as $m): ?>
                     <option value=<?= $m->moduleCode ?>><?= $m->moduleName ?></option>
@@ -146,7 +146,7 @@
             <!-- Dropdown 3 -->
             <div class="mb-3" id="module-3-container">
                 <label for="module3-dropdown" class="form-label" id="module-3-label">Module 3</label>
-                <select class="form-select" id="module3-dropdown">
+                <select required form="modules-form" class="form-select" id="module3-dropdown" name="module3">
                     <option value="" disabled selected>Choose Module</option>
                     <?php foreach ($modules as $m): ?>
                     <option value=<?= $m->moduleCode ?>><?= $m->moduleName ?></option>
@@ -156,14 +156,14 @@
             <!-- Dropdown 4 -->
             <div class="mb-3" id="module-4-container">
                 <label for="module4-dropdown" class="form-label" id="module-4-label">Module 4</label>
-                <select class="form-select" id="module4-dropdown">
+                <select required form="modules-form" class="form-select" id="module4-dropdown" name="module4">
                     <option value="" disabled selected>Choose Module</option>
                     <?php foreach ($modules as $m): ?>
                     <option value=<?= $m->moduleCode ?>><?= $m->moduleName ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary" id="update-modules-button">Update</button>
+            <button type="submit" form="modules-form" class="btn btn-primary" id="update-modules-button">Update</button>
         </form>
 
         <a href="../controller/dashboard.php" id="back-link">

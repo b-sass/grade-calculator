@@ -41,6 +41,20 @@ function setOrAddGrade($userID, $assignmentID, $grade) {
     return 0;
 }
 
+function addModuleForUser($userID, $moduleCode) {
+    global $pdo;
+    $sql = "INSERT INTO ModuleChoice VALUES (?, ?)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userID, $moduleCode]);
+}
+
+function deleteModuleForUser($userID, $moduleCode) {
+    global $pdo;
+    $sql = "DELETE FROM ModuleChoice WHERE userID = ? AND moduleCode = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userID, $moduleCode]);
+}
+
 function getCurrentModuleGrade($userID, $moduleCode) {
     global $pdo;
     $getModuleGradesStatement = $pdo->prepare("SELECT Grade.obtainedGrade, Assignment.assignmentWeight

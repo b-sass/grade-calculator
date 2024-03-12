@@ -5,6 +5,9 @@ require_once("../model/data/dataAccess.php");
 session_start();
 
 $level = $_REQUEST["currentTab"];
+// set module year for later use
+$_SESSION["moduleLevel"] = $level;
+
 $modules = getAllModulesForLevel($level);
 
 
