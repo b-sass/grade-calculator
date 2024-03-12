@@ -163,6 +163,10 @@
                 margin-bottom: 10px;
             }
         }
+
+        #currentTab {
+            display: none;
+        }
     </style>
 
 </head>
@@ -175,16 +179,17 @@
     <div class="container my-3" id="dashboard-container">
         <h2 class="text-center mb-4" id="dashboard-title">Dashboard</h2>
 
-        <div class="row mb-3" id="level-buttons-row">
+        <form class="row mb-3" id="level-buttons-row" method="post" action="../controller/yearmoduleedit.php">
             <div class="col">
-                <radio class="btn btn-outline-secondary me-2 level-button" id="level4-btn">Level 4</button>
-                <button class="btn btn-outline-secondary me-2 level-button" id="level5-btn">Level 5</button>
-                <button class="btn btn-outline-secondary level-button" id="level6-btn">Level 6</button>
+                <input id="currentTab" name="currentTab" />
+                <input type="button" class="btn btn-outline-secondary me-2 level-button" id="level4-btn" value="Level 4" />
+                <input type="button" class="btn btn-outline-secondary me-2 level-button" id="level5-btn" value="Level 5" />
+                <input type="button" class="btn btn-outline-secondary level-button" id="level6-btn" value="Level 6" />
             </div>
             <div class="col text-end">
-                <a href="../controller/yearmoduleedit.php"><button class="btn btn-primary" id="edit-modules-btn">Edit Modules</button></a>
+                <button type="submit" class="btn btn-primary" id="edit-modules-btn">Edit Modules</button>
             </div>
-        </div>
+        </form>
 
         <div class="row" id="content-row">
             <div class="col-md-8">

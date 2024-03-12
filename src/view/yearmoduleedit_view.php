@@ -121,7 +121,7 @@
     <?php include "../view/navbar.php"; ?>
     
     <div class="container my-3" id="modules-container">
-        <h2 class="mb-4" id="year-modules-title">Year X Modules</h2>
+        <h2 class="mb-4" id="year-modules-title">Year <?= $level ?> Modules</h2>
         <form id="modules-form">
             <!-- Dropdown 1 -->
             <div class="mb-3" id="module-1-container">

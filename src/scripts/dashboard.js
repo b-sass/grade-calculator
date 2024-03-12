@@ -1,5 +1,7 @@
 let buttons = document.querySelectorAll(".level-button");
 let modules = document.querySelectorAll(".modules");
+let currentTab = document.querySelector("#currentTab");
+
 console.log(buttons);
 console.log(modules);
 buttons.forEach((button, index) => {
@@ -15,7 +17,8 @@ buttons.forEach((button, index) => {
 		modules.forEach((module, moduleIndex) => {
 			module.style.display = moduleIndex === index ? 'block' : 'none';
 		})
-
+		// console.log(index);
+		currentTab.value = index + 4;
 		// console.log(buttons.indexOf(button));
 		
 	});

@@ -4,7 +4,8 @@ require_once("../model/Module.php");
 require_once("../model/data/dataAccess.php");
 session_start();
 
-$level = 5;
+$level = $_REQUEST["currentTab"];
+print_r($level);
 $modules = getAllModulesForLevel($level);
 
 
