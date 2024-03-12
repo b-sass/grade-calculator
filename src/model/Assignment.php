@@ -5,6 +5,7 @@ class Assignment {
 	private $moduleCode;
 	private $assignmentName;
 	private $assignmentWeight;
+	private $assignmentSequenceIndex;
 	
 	function __get($name) {
 		return $this->$name;

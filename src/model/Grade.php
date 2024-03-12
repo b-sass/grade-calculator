@@ -3,7 +3,7 @@
 class Grade {
 	private $gradeID;
 	private $assignmentID;
-	private $scenarioID;
+	private $userID;
 	private $obtainedGrade;
 	private $gradeWeight;
 
