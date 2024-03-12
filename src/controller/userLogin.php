@@ -20,9 +20,9 @@ function login($pdo, $email, $pass) {
 	$sql = "SELECT * FROM User WHERE email = ? AND password = ?";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email, $pass]);
-	$profile = $stmt->fetch(PDO::FETCH_CLASS, "User"); // Will return null if the user doesn't exist
+	$profile = $stmt->fetchAll(PDO::FETCH_CLASS, "User"); // Will return null if the user doesn't exist
 	
-	if($profile != null) {
+	if(sizeof($profile) == 1) {
 		// If they do, log in
 		$_SESSION["loggedInUser"] = $profile;
 		require_once("../view/dashboard_view.php");

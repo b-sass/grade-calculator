@@ -103,7 +103,7 @@
                     <a href="../controller/signup.php"><button class="btn btn-success" type="button">Signup</button></a>
                 </form>
             <?php } else { ?>
-                <p><?= $_SESSION["loggedInUser"]->email ?></p>
+                <p><?= $_SESSION["loggedInUser"][0]->email ?></p>
             <?php } ?>
         </div>
     </div>
