@@ -177,7 +177,7 @@
 
         <div class="row mb-3" id="level-buttons-row">
             <div class="col">
-                <button class="btn btn-outline-secondary me-2 level-button" id="level4-btn">Level 4</button>
+                <radio class="btn btn-outline-secondary me-2 level-button" id="level4-btn">Level 4</button>
                 <button class="btn btn-outline-secondary me-2 level-button" id="level5-btn">Level 5</button>
                 <button class="btn btn-outline-secondary level-button" id="level6-btn">Level 6</button>
             </div>
