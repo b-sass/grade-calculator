@@ -2,6 +2,7 @@
 
 require_once(dirname(__FILE__) ."/dbSecrets.php");
 
+
 $dsn = "mysql:host=". $host .";port=3306;dbname=". $dbname;
 
 $pdo = new PDO($dsn, $user, $pass);
@@ -25,7 +26,7 @@ function setOrAddGrade($userID, $assignmentID, $grade) {
         return 1;
     }
     global $pdo;
-    $getGradeStatement = $pdo->prepare("SELECT id, assignmentID, userID, obtainedGrade FROM Grades WHERE assignmentID = ? AND userID = ?");
+    $getGradeStatement = $pdo->prepare("SELECT gradeID, assignmentID, userID, obtainedGrade FROM Grade WHERE assignmentID = ? AND userID = ?");
     $getGradeStatement->execute([$assignmentID, $userID]);
     $gradeObject = $getGradeStatement->fetchAll(PDO::FETCH_CLASS, 'Grade')[0];
     if ($gradeObject) {
@@ -35,7 +36,7 @@ function setOrAddGrade($userID, $assignmentID, $grade) {
         return 0;
     }
     // else: create new grade record
-    $createGradeStatement = $pdo->prepare("INSERT INTO Grades (assignmentID, userID, obtainedGrade) VALUES (?, ?, ?)");
+    $createGradeStatement = $pdo->prepare("INSERT INTO Grade (assignmentID, userID, obtainedGrade) VALUES (?, ?, ?)");
     $createGradeStatement->execute([$assignmentID, $userID, $grade]);
     return 0;
 }
@@ -78,15 +79,26 @@ function getUserModulesForLevel($userID, $level) {
     return $modules;
 }
 
+function getModuleGradesForUser($userID, $moduleCode) {
+    /*
+    i wanna get grades objects where userID = userID,
+    and assignmentId = "the assignments from moduleCode"
+    */
+    global $pdo;
+    $sql = "SELECT gradeID, assignmentID, userID, obtainedGrade FROM Grade WHERE userID = ? AND assignmentID IN (SELECT assignmentID from Assignment WHERE moduleCode = ?)";
+    $statement = $pdo->prepare($sql);
+    $statement->execute([$userID, $moduleCode]);
+    $grades = $statement->fetchAll(PDO::FETCH_CLASS, "Grade");
+    return $grades;
+}
 function getAssignmentsForModule($moduleCode) {
     global $pdo;
     $sql = "SELECT assignmentID, moduleCode, assignmentName, assignmentWeight, assignmentSequenceIndex FROM Assignment WHERE moduleCode = ?";
-    $statement = pdo->prepare($sql);
+    $statement = $pdo->prepare($sql);
     $statement->execute([$moduleCode]);
-    $assignments = $statement->fethAll(PDO::FETCH_CLASS, 'Assignment');
+    $assignments = $statement->fetchAll(PDO::FETCH_CLASS, 'Assignment');
     return $assignments;
 }
-
 function getLetterGradeFromNumber($grade) {
     if (!isValidGrade($grade)) {
         return;
@@ -106,7 +118,7 @@ function getLetterGradeFromNumber($grade) {
         30 => "E"
     ];
     foreach ($gradeBoundaries as $boundary => $letterGrade) {
-        if ($grade > $boundary) {
+        if ($grade >= $boundary) {
             return $letterGrade;
         }
     }
