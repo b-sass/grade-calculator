@@ -14,63 +14,52 @@ function calculateYearClassification($userId)
     // Their modules on the current (selected) year.
 }
 // grade is an int/float between 0 and 100
-function setUserAssessmentGrade($scenarioId, $assignmentId, $grade)
-{
+function isValidGrade($grade) {
     if (!is_numeric($grade)) {
-        echo ("ERROR: trying to input non-numeric value for grade");
-        return;
+        return false;
     }
-    if ($grade > 100 || $grade < 0) {
-        echo ("please stop being stupid");
-        return;
-    }
-    // .. any other test needed to validate dumb user input
-    // input should be valid below this point
-
-    // function should: 
-    // check if the grade for this existing scenarioId and assignment ID exist (in which case : UPDATE grade), if not: create NEW record
-    global $pdo;
-    $doesGradeExistStatement = $pdo->prepare("SELECT id, assignmentId, scenarioId, obtainedGrade FROM Grades WHERE assignmentId = ? AND scenarioId = ?");
-    $doesGradeExistStatement->execute([$assignmentId, $scenarioId]);
-    $gotGrade = $doesGradeExistStatement->fetchAll(PDO::FETCH_CLASS, 'Grade')[0]; // at that point gotGrade should be an object of type Grade
-    if ($gotGrade) // NULL would be false, an object = true
-    {
-        // TODO: update value
-
-        return;
-    }
-    // (else) create new grade (new row)
-    $createGradeStatement = $pdo->prepare("INSERT INTO Grades (assignmentId, scenarioId, obtainedGrade) VALUES (?, ?, ?)");
-    $createGradeStatement->execute([$assignmentId, $scenarioId, $grade]);
+    return ($grade >= 0 && $grade<= 100);
 }
-function displayModules()
-{
+function setUserAssignmentGrade($scenarioID, $assignmentID, $grade) {
+    if (!isValidGrade($grade)) {
+        return 1;
+    }
     global $pdo;
-    echo("echoing stuff");
-    $statement = $pdo->query('SELECT * FROM User');
-    $returnStatement = $statement->fetchAll(PDO::FETCH_OBJ);
-    return $returnStatement;
+    $doesGradeExistStatement = $pdo->prepare("SELECT id, assignmentID, scenarioID, obtainedGrade FROM Grades WHERE assignmentID = ? AND scenarioID = ?");
+    $doesGradeExistStatement->execute([$assignmentID, $scenarioID]);
+    $gradeObject = $doesGradeExistStatement->fetchAll(PDO::FETCH_CLASS, 'Grade')[0];
+    if ($gradeObject) {
+        // update obtained grade
+        $gradeID = $gradeObject->gradeID;
+        $updateStatement = $pdo->query("UPDATE Grade SET obtainedGrade = $grade WHERE gradeID = $gradeID");
+        return 0;
+    }
+    // else: create new grade record
+    $createGradeStatement = $pdo->prepare("INSERT INTO Grades (assignmentID, scenarioID, obtainedGrade) VALUES (?, ?, ?)");
+    $createGradeStatement->execute([$assignmentID, $scenarioID, $grade]);
+    return 0;
 }
 
-// Random example
-// INSERT INTO Employees (FirstName, LastName, Email)
-// VALUES ('John', 'Doe', 'john.doe@example.com');
-
-
-// random paul example for syntax and stuff
-// function getUsersBySurname($surname)
-// {
-//   if ($surname == "")
-//   {
-//     return getAllUsers();
-//   }
-//   global $pdo;
-//   $statement = $pdo->prepare('SELECT id, givenname, surname, address FROM customers
-//                               WHERE surname = ?');
-//   $statement->execute([$surname]);
-//   $users = $statement->fetchAll(PDO::FETCH_CLASS, 'Customer');
-//   return $users;
-// }
+function getCurrentModuleGrade($scenarioID, $moduleCode) {
+    global $pdo;
+    /*
+    get an array of OBJECTS that have assignmentWeight and obtainedGrade
+    */
+    $getModuleGradesStatement = $pdo->prepare("SELECT obtainedGrade, assignmentWeight
+        FROM Grade, Assignment
+        WHERE Grade.scenarioID = ?
+        AND Grade.assignmentID = Assignment.assignmentID
+        AND Assignment.moduleCode = ?");
+    $getModuleGradesStatement->execute([$scenarioID, $moduleCode]);
+    $grades = $getModuleGradesStatement->fetchAll(PDO::FETCH_OBJ);
+    $totalGrade = 0;
+    $totalWeight = 0;
+    foreach ($grades as $grade) {
+        $totalGrade += $grade->obtainedGrade * $grade->assignmentWeight;
+        $totalWeight += $grade->assignmentWeight;
+    }
+    return $totalGrade * (1 / $totalWeight);
+}
 
 // returns all modules for a given level e.g. level 4 (year 1)
 function getAllModulesForLevel($level) {
@@ -89,4 +78,23 @@ function getUserModulesForLevel($userID, $level) {
     $stmt->execute([$userID, $level]);
     $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
     return $modules;
+}
+
+function getLetterGradeFromNumber($grade) {
+    if (!isValidGrade($grade)) {
+        return;
+    }
+    // TODO correct the values
+    if ($grade > 80) return "A+";
+    if ($grade > 75) return "A";
+    if ($grade > 70) return "A-";
+    if ($grade > 66) return "B+";
+    if ($grade > 63) return "B";
+    if ($grade > 60) return "B-";
+    if ($grade > 56) return "C+";
+    if ($grade > 53) return "C";
+    if ($grade > 50) return "C-";
+    if ($grade > 40) return "D";
+    if ($grade > 30) return "E";
+    return "F";
 }

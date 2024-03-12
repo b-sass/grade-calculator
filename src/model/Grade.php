@@ -5,6 +5,7 @@ class Grade {
 	private $assignmentID;
 	private $scenarioID;
 	private $obtainedGrade;
+	private $gradeWeight;
 
 	function __get($name) {
 		return $this->$name;
