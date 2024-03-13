@@ -22,17 +22,19 @@ function isValidGrade($grade) {
     return ($grade >= 0 && $grade<= 100);
 }
 function setOrAddGrade($userID, $assignmentID, $grade) {
-    if (!isValidGrade($grade)) {
-        return 1;
-    }
+    // if (!isValidGrade($grade)) {
+    //     return 1;
+    // }
     global $pdo;
-    $getGradeStatement = $pdo->prepare("SELECT gradeID, assignmentID, userID, obtainedGrade FROM Grade WHERE assignmentID = ? AND userID = ?");
+    $sql = "SELECT * FROM Grade WHERE assignmentID = ? AND userID = ?";
+    $getGradeStatement = $pdo->prepare($sql);
     $getGradeStatement->execute([$assignmentID, $userID]);
-    $gradeObject = $getGradeStatement->fetchAll(PDO::FETCH_CLASS, 'Grade')[0];
+    $getGradeStatement->setFetchMode(PDO::FETCH_CLASS, "Grade");
+    $gradeObject = $getGradeStatement->fetch();
     if ($gradeObject) {
         // update obtained grade
         $gradeID = $gradeObject->gradeID;
-        $updateStatement = $pdo->query("UPDATE Grade SET obtainedGrade = $grade WHERE gradeID = $gradeID");
+        $pdo->query("UPDATE Grade SET obtainedGrade = $grade WHERE gradeID = $gradeID");
         return 0;
     }
     // else: create new grade record
@@ -107,11 +109,22 @@ function getModuleGradesForUser($userID, $moduleCode) {
 }
 function getAssignmentsForModule($moduleCode) {
     global $pdo;
-    $sql = "SELECT assignmentID, moduleCode, assignmentName, assignmentWeight, assignmentSequenceIndex FROM Assignment WHERE moduleCode = ?";
+    $sql = "SELECT * FROM Assignment WHERE moduleCode = ?";
     $statement = $pdo->prepare($sql);
     $statement->execute([$moduleCode]);
-    $assignments = $statement->fetchAll(PDO::FETCH_CLASS, 'Assignment');
+    $assignments = $statement->fetchAll(PDO::FETCH_CLASS, "Assignment");
     return $assignments;
+}
+
+function getAssignmentGradeForUser($userID, $assignmentID) {
+    global $pdo;
+    $sql = "SELECT obtainedGrade FROM Grade
+            WHERE userID = ? AND assignmentID = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userID, $assignmentID]);
+    $stmt->setFetchMode(PDO::FETCH_CLASS, "Grade");
+    $grade = $stmt->fetch();
+    return $grade;
 }
 function getLetterGradeFromNumber($grade) {
     if (!isValidGrade($grade)) {
