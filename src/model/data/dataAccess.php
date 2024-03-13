@@ -96,10 +96,6 @@ function getUserModulesForLevel($userID, $level) {
 }
 
 function getModuleGradesForUser($userID, $moduleCode) {
-    /*
-    i wanna get grades objects where userID = userID,
-    and assignmentId = "the assignments from moduleCode"
-    */
     global $pdo;
     $sql = "SELECT gradeID, assignmentID, userID, obtainedGrade FROM Grade WHERE userID = ? AND assignmentID IN (SELECT assignmentID from Assignment WHERE moduleCode = ?)";
     $statement = $pdo->prepare($sql);
