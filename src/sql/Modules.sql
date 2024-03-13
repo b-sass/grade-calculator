@@ -1,5 +1,5 @@
 INSERT INTO Module ()
-VALUES ("CI4105","Programming 1 - Thinking Like A Programmer",4),
+VALUES ("CI4105","Programming I - Thinking Like A Programmer",4),
 		("CI4250","Computing Fundamentals",4),
 		("CI4305","Requirements Analysis and Design",4),
 		("CI4450","Professional Environments 1",4),
