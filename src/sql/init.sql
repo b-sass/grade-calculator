@@ -1,6 +1,6 @@
 USE flare;
 
-CREATE TABLE User (
+CREATE TABLE IF NOT EXISTS User (
 	userID INT(6) NOT NULL AUTO_INCREMENT,
 	username VARCHAR(40) NOT NULL,
 	email VARCHAR(40) NOT NULL,
@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS Module (
 	PRIMARY KEY (moduleCode)
 );
 
-CREATE TABLE ModuleChoice (
+CREATE TABLE IF NOT EXISTS ModuleChoice (
 	userID INT(6) NOT NULL,
 	moduleCode VARCHAR(10) NOT NULL,
 	FOREIGN KEY (userID) REFERENCES User(userID),
@@ -24,7 +24,7 @@ CREATE TABLE ModuleChoice (
 	PRIMARY KEY (userID, moduleCode)
 );
 
-CREATE TABLE Assignment (
+CREATE TABLE IF NOT EXISTS Assignment (
 	assignmentID INT(6) NOT NULL AUTO_INCREMENT,
 	moduleCode VARCHAR(10) NOT NULL,
 	assignmentName VARCHAR(60),
@@ -41,7 +41,7 @@ CREATE TABLE Assignment (
 -- 	PRIMARY KEY (scenarioID)
 -- );
 
-CREATE TABLE Grade (
+CREATE TABLE IF NOT EXISTS Grade (
 	gradeID INT(6) NOT NULL AUTO_INCREMENT,
 	assignmentID INT(6) NOT NULL,
 	userID INT(8) NOT NULL,
