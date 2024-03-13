@@ -79,7 +79,7 @@ function getCurrentModuleGrade($userID, $moduleCode) {
 // returns all modules for a given level e.g. level 4 (year 1)
 function getAllModulesForLevel($level) {
     global $pdo;
-    $sql = "SELECT * FROM Module WHERE level = ?";
+    $sql = "SELECT * FROM Module WHERE moduleLevel = ?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$level]);
     $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
@@ -88,7 +88,7 @@ function getAllModulesForLevel($level) {
 
 function getUserModulesForLevel($userID, $level) {
     global $pdo;
-    $sql = "SELECT Module.moduleCode, moduleName, level FROM ModuleChoice JOIN Module ON ModuleChoice.moduleCode=Module.moduleCode WHERE userID=? AND level=?";
+    $sql = "SELECT Module.moduleCode, moduleName, moduleLevel FROM ModuleChoice JOIN Module ON ModuleChoice.moduleCode=Module.moduleCode WHERE userID=? AND moduleLevel=?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$userID, $level]);
     $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");

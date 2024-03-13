@@ -1,4 +1,3 @@
-USE flare;
 
 CREATE TABLE IF NOT EXISTS User (
 	userID INT(6) NOT NULL AUTO_INCREMENT,
@@ -26,10 +25,10 @@ CREATE TABLE IF NOT EXISTS ModuleChoice (
 
 CREATE TABLE IF NOT EXISTS Assignment (
 	assignmentID INT(6) NOT NULL AUTO_INCREMENT,
-	moduleCode VARCHAR(10) NOT NULL,
 	assignmentName VARCHAR(60),
 	assignmentWeight DEC(5,2),
 	assignmentSequenceIndex INT(2),
+	moduleCode VARCHAR(10) NOT NULL,
 	FOREIGN KEY (moduleCode) REFERENCES Module(moduleCode),
 	PRIMARY KEY (assignmentID)
 );
