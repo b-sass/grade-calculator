@@ -22,8 +22,52 @@ buttons.forEach((button, index) => {
 		})
 		// Set the chosen level
 		currentTab.value = index + 4;
+
+		refreshStats(index);
 	});
 });
 
+function refreshStats(index) {
+	// Percentage
+	let sum = 0;
+	let percentage = document.querySelector("#percentage-value");
+	let grades = document.querySelectorAll(".grade"+index);
+	grades.forEach(grade => {
+		sum += parseFloat(grade.textContent);
+	});
+	let grade = (Math.round(sum/4 * 100) / 100);
+	percentage.textContent = grade + "%";
+
+	// Classification
+	let classification = document.querySelector("#classification-value");
+	classification.textContent = getClass(grade);
+	// Grade
+
+	let letter = document.querySelector("#grade-value");
+	letter.textContent = getLetter(grade);
+}
+
+// copied from dataAccess
+function getLetter(grade) {
+	if (grade >= 80) return "A+";
+	else if (grade >= 75) return "A";
+	else if (grade >= 70) return "A-";
+	else if (grade >= 66) return "B+";
+	else if (grade >= 63) return "B";
+	else if (grade >= 60) return "B-";
+	else if (grade >= 56) return "C+";
+	else if (grade >= 53) return "C";
+	else if (grade >= 50) return "C-";
+	else if (grade >= 40) return "D";
+	else if (grade >= 30) return "E";
+	else return "F";
+}
+
+function getClass(grade) {
+	if (grade >= 70) return "1st";
+	else if (grade >= 60) return "2.1";
+	else if (grade >= 50) return "2.2";
+	else return "3rd";
+}
 // click the button when page loads
 buttons[0].click();

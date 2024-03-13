@@ -25,6 +25,3 @@ foreach ($degreeModules as $i=>$modules) {
 // TODO: find a better way of doing this
 
 require_once ("../view/dashboard_view.php");
-
-
-?>

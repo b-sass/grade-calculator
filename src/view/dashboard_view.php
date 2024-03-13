@@ -197,16 +197,16 @@
                     <h4 id="modules-title" class="mb-3">Modules</h4>
 
                     <?php foreach ($degreeModules as $i=>$yearModule): ?>
-                    <div class="mb-3 modules" id="module-list-<? $i+4 ?>">
+                    <div class="mb-3 modules" id="module-list-<?= $i+4 ?>">
                         <!-- Repeat this block for each module -->
                         <?php foreach ($yearModule as $j=>$m): ?>
-                        <form method="get" action="../controller/assessment.php" class="row g-3 align-items-center module-item" id="module<? $j+1 ?>">
+                        <form method="get" action="../controller/assessment.php" class="row g-3 align-items-center module-item" id="module<?= $j+1 ?>">
                             <div class="col-md-8">
                                 <input name="module" type="hidden" value=<?= $m->moduleCode ?>>
                                 <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?></div>
                             </div>
                             <div class="col-md-2">
-                                <div class="p-2 rounded text-center" id="module1-grade"><?= $grades[$i][$j] ?>%</div>
+                                <div class="p-2 rounded text-center grade<?= $i ?>" id="module1-grade"><?= $grades[$i][$j] ?>%</div>
                             </div>
                             <div class="col-md-2">
                                 <button type="submit" class="btn btn-outline-secondary w-100" id="module1-edit-btn">Edit</button>
