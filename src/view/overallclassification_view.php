@@ -167,22 +167,24 @@
                 <div class="bg-light p-3 rounded text-center" id="level-5">
                     <h4 id="level-5-title">Level 5</h4>
                     <!-- Repeat this block four times for each module -->
+                    <?php foreach ($level5modules as $key=>$m): ?>
                     <div class="mb-3" id="module-container-5">
                         <div class="row g-3 align-items-center" id="module-row-5">
                             <div class="col-md-10">
-                                <div class="p-2 rounded" id="module-name-5">Module Name</div>
+                                <div class="p-2 rounded" id="module-name-5"><?= $m->moduleName ?></div>
                             </div>
                             <div class="col-md-2">
-                                <div class="p-2 rounded text-center" id="module-grade-5">Grade</div>
+                                <div class="p-2 rounded text-center" id="module-grade-5"><?= $level5grades[$key] ?>%</div>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach ?>
                     <!-- End of module block -->
                     <div class="mb-3" id="overall-weight-5-container">
                         <div class="row g-3 align-items-center mt-4" id="overall-weight-5">
                             <div class="col-md-12">
                                 <h4 id="overall-weight-title-5">Overall Weight (20%)</h4>
-                                <div class="p-2 rounded" id="overall-weight-value-5">X%</div>
+                                <div class="p-2 rounded" id="overall-weight-value-5">%</div>
                             </div>
                         </div>
                     </div>
@@ -193,22 +195,24 @@
                 <div class="bg-light p-3 rounded text-center" id="level-6">
                     <h4 id="level-6-title">Level 6</h4>
                     <!-- Repeat this block four times for each module -->
+                    <?php foreach ($level6modules as $key=>$m): ?>
                     <div class="mb-3" id="module-container-6">
                         <div class="row g-3 align-items-center" id="module-row-6">
                             <div class="col-md-10">
-                                <div class=" p-2 rounded" id="module-name-6">Module Name</div>
+                                <div class=" p-2 rounded" id="module-name-6"><?= $m->moduleName ?></div>
                             </div>
                             <div class="col-md-2">
-                                <div class=" p-2 rounded text-center" id="module-grade-6">Grade</div>
+                                <div class=" p-2 rounded text-center" id="module-grade-6"><?= $level6grades[$key] ?>%</div>
                             </div>
                         </div>
                     </div>
+                    <?php endforeach ?>
                     <!-- End of module block -->
                     <div class="mb-3" id="overall-weight-6-container">
                         <div class="row g-3 align-items-center mt-4" id="overall-weight-6">
                             <div class="col-md-12">
                                 <h4 id="overall-weight-title-6">Overall Weight (80%)</h4>
-                                <div class="p-2 rounded" id="overall-weight-value-6">X%</div>
+                                <div class="p-2 rounded" id="overall-weight-value-6">%</div>
                             </div>
                         </div>
                     </div>
@@ -250,6 +254,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="../scripts/overallGrade.js"></script>
 </body>
 
 </html>
