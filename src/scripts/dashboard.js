@@ -49,17 +49,19 @@ function refreshStats(index) {
 
 // copied from dataAccess
 function getLetter(grade) {
-	if (grade >= 80) return "A+";
+	if (grade >= 85) return "A+";
 	else if (grade >= 75) return "A";
 	else if (grade >= 70) return "A-";
-	else if (grade >= 66) return "B+";
+	else if (grade >= 67) return "B+";
 	else if (grade >= 63) return "B";
 	else if (grade >= 60) return "B-";
-	else if (grade >= 56) return "C+";
+	else if (grade >= 57) return "C+";
 	else if (grade >= 53) return "C";
 	else if (grade >= 50) return "C-";
-	else if (grade >= 40) return "D";
-	else if (grade >= 30) return "E";
+	else if (grade >= 47) return "D+";
+	else if (grade >= 43) return "D";
+	else if (grade >= 40) return "D-";
+	else if (grade >= 35) return "FM";
 	else return "F";
 }
 

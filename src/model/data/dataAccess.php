@@ -130,19 +130,20 @@ function getLetterGradeFromNumber($grade) {
     if (!isValidGrade($grade)) {
         return;
     }
-    // TODO check actual grades values
     $gradeBoundaries = [
-        80 => "A+",
+        85 => "A+",
         75 => "A",
         70 => "A-",
-        66 => "B+",
+        67 => "B+",
         63 => "B",
         60 => "B-",
-        56 => "C+",
+        57 => "C+",
         53 => "C",
         50 => "C-",
-        40 => "D",
-        30 => "E"
+        47 => "D+",
+        43 => "D",
+        40 => "D-",
+        35 => "FM",
     ];
     foreach ($gradeBoundaries as $boundary => $letterGrade) {
         if ($grade >= $boundary) {
