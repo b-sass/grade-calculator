@@ -19,10 +19,10 @@ grades5.forEach(grade => {
 		worseModuleGrade = moduleGrade;
 	}
 	sum += moduleGrade;
-	// CURRENTLY DOES THE EXACT SAME THING TODO continue this
 });
-
-grade = (Math.round(sum/4 * 0.2));
+sum -= worseModuleGrade / 2; // added
+grade = (Math.round(sum/3.5 * 0.2));
+// grade = (Math.round(sum/4 * 0.2));
 weight20.textContent = grade+ "%";
 finalGrade += grade;
 
