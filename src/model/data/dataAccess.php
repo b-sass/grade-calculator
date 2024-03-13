@@ -151,3 +151,19 @@ function getLetterGradeFromNumber($grade) {
     }
     return "F";
 }
+
+function updateEmailForUser($userID, $email) {
+    global $pdo;
+    $sql = "UPDATE User
+            SET email = ?
+            WHERE userID = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email, $userID]);
+}
+
+function updatePassForUser($userID, $pass) {
+    global $pdo;
+    $sql = "UPDATE User SET password = ? WHERE userID = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$pass, $userID]);
+}

@@ -25,11 +25,11 @@ function login($pdo, $email, $pass) {
 	if(sizeof($profile) == 1) {
 		// If they do, log in
 		$_SESSION["loggedInUser"] = $profile;
-		require_once("../view/dashboard_view.php");
+		require_once("../controller/dashboard.php");
 	}
 	else {
 		// If they don't, go to the signup page
-		require_once("../view/signup_view.php");
+		require_once("../controller/signup.php");
 	}
 }
 
@@ -42,7 +42,7 @@ function signup($pdo, $email, $username, $pass) {
 	
 	if(sizeof($profile) == 1) {
 		// If it does, go to the login page.
-		require_once("../view/login_view.php");
+		require_once("../controller/login.php");
 	}
 
 	// Insert a user with the provided details to the Users table
@@ -51,7 +51,7 @@ function signup($pdo, $email, $username, $pass) {
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email, $username, $pass]);
 	// Then, go back to login
-	require_once("../view/login_view.php");
+	require_once("../controller/login.php");
 }
 	
 ?>
