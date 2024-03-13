@@ -94,7 +94,7 @@
                     <a class="nav-link" href="../controller/overallclassfication.php">Overall Classification </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">FAQs</a>
+                    <a class="nav-link" href="../controller/faq.php">FAQs</a>
                 </li>
             </ul>
             <?php if ($_SESSION["loggedInUser"] == null) { ?>
@@ -103,7 +103,7 @@
                     <a href="../controller/signup.php"><button class="btn btn-success" type="button">Signup</button></a>
                 </form>
             <?php } else { ?>
-                <p><?= $_SESSION["loggedInUser"][0]->email ?></p>
+                <a href="../controller/myaccount.php"><button class="btn btn-success" type="button">My Account</button></a>
             <?php } ?>
         </div>
     </div>
