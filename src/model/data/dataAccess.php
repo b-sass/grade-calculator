@@ -71,9 +71,8 @@ function getCurrentModuleGrade($userID, $moduleCode) {
     $totalWeight = 0;
     foreach ($grades as $grade) {
         $totalGrade += $grade->obtainedGrade * $grade->assignmentWeight;
-        // $totalWeight += $grade->assignmentWeight;
     }
-    return $totalGrade; //* (1 / $totalWeight);
+    return $totalGrade; 
 }
 
 // returns all modules for a given level e.g. level 4 (year 1)

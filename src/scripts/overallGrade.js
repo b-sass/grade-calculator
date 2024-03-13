@@ -11,11 +11,18 @@ let finalClass = document.querySelector("#classification-value");
 let finalPercentage = document.querySelector("#grade-value");
 
 let sum = 0;
+let worseModuleGrade = 100;
+let moduleGrade = 0;
 grades5.forEach(grade => {
-	sum += parseFloat(grade.textContent);
+	moduleGrade = parseFloat(grade.textContent);
+	if (moduleGrade < worseModuleGrade) {
+		worseModuleGrade = moduleGrade;
+	}
+	sum += moduleGrade;
+	// CURRENTLY DOES THE EXACT SAME THING TODO continue this
 });
 
-grade = (Math.round(sum/4 * 0.2 * 100) / 100);
+grade = (Math.round(sum/4 * 0.2));
 weight20.textContent = grade+ "%";
 finalGrade += grade;
 
