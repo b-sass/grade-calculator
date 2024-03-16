@@ -36,7 +36,7 @@ function refreshStats(index) {
 		sum += parseFloat(grade.textContent);
 	});
 	let grade = (Math.round(sum/4 * 100) / 100);
-	percentage.textContent = grade + "%";
+	percentage.textContent = grade.toFixed(2) + "%";
 
 	// Classification
 	let classification = document.querySelector("#classification-value");
