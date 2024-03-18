@@ -12,7 +12,9 @@ $ids = $_REQUEST["assignmentID"];
 $user = $_SESSION["loggedInUser"];
 
 foreach ($grades as $key=>$g) {
-	setOrAddGrade($user->userID, $ids[$key], $g);
+	if ($g != null) {
+		setOrAddGrade($user->userID, $ids[$key], $g);
+	}
 }
 
 require_once("../controller/dashboard.php");
