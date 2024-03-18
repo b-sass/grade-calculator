@@ -110,7 +110,7 @@
                 <h5 class="display-3 text-center mb-5" id="signup-title">Sign up</h5>
                 <?php if(isset($_SESSION["warning"])): ?>
                 <p style="color:red;"><?= $_SESSION["warning"] ?></p>
-                <?php endif ?>
+                <?php $_SESSION["warning"] = null; endif ?>
                 <form method="post" action="../controller/userLogin.php" id="signup-form">
                     <div class="mb-3" id="signup-email-container">
                         <div class="form-text mb-2" id="signup-agreement">By signing up, you agree to the <a href="../controller/termsOfUse.php">Terms of use</a> and <a href="../controller/privacypolicy.php">Privacy Policy</a>.</div>

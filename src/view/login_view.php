@@ -132,7 +132,7 @@
                 <h5 class="display-3 text-center mb-5" id="login-title">Login</h5>
                 <?php if(isset($_SESSION["warning"])): ?>
                 <p style="color:red;"><?= $_SESSION["warning"] ?></p>
-                <?php endif ?>
+                <?php $_SESSION["warning"] = null; endif ?>
                 <form method="post" action="../controller/userLogin.php" id="login-form">
                     <!-- Input for user details -->
                     <div class="mb-3" id="user-email-container">
