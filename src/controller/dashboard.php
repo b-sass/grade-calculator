@@ -24,7 +24,7 @@ else {
 			// Add each module in a year to a 2D array because
 			// its easier to parse it later in the view
 			// sue me
-			$grades[$i][$j] = getCurrentModuleGrade($user->userID,$modules[$j]->moduleCode);
+			$moduleGrades[$i][$j] = getCurrentModuleGrade($user->userID,$modules[$j]->moduleCode);
 		}
 	}
 	// TODO: find a better way of doing this

@@ -109,7 +109,7 @@
                     <span class="lead" id="assessment-name-1"><?= $a->assignmentName ?></span>
                 </div>
                     <div class="col-md-6" id="assessment-grade-col-1">
-                        <input name="grade[]" type="number" min="0" max="100" class="form-control assessment-input" id="assessment-input-1" placeholder="Current Grade: <?= $grades[$key]->obtainedGrade ?>">
+                        <input name="grade[]" type="number" min="0" max="100" class="form-control assessment-input" id="assessment-input-1" placeholder="Current Grade: <?= $currentGrades[$key]->obtainedGrade ?>">
                     </div>
 
             </div>

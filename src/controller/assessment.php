@@ -12,8 +12,7 @@ $assignments = getAssignmentsForModule($module);
 
 
 foreach ($assignments as $a) {
-	$grades[] = getAssignmentGradeForUser($user->userID, $a->assignmentID);
+	$currentGrades[] = getAssignmentGradeForUser($user->userID, $a->assignmentID);
 }
 
 require_once "../view/assessment_view.php";
-?>

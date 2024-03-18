@@ -7,11 +7,11 @@ require_once("../model/data/dataAccess.php");
 session_start();
 
 // Get grades for each assignment
-$grades = $_REQUEST["grade"];
+$newGrades = $_REQUEST["grade"];
 $ids = $_REQUEST["assignmentID"];
 $user = $_SESSION["loggedInUser"];
 
-foreach ($grades as $key=>$g) {
+foreach ($newGrades as $key=>$g) {
 	if ($g != null) {
 		setOrAddGrade($user->userID, $ids[$key], $g);
 	}
