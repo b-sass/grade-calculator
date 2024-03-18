@@ -25,20 +25,13 @@ CREATE TABLE IF NOT EXISTS ModuleChoice (
 
 CREATE TABLE IF NOT EXISTS Assignment (
 	assignmentID INT(6) NOT NULL AUTO_INCREMENT,
-	assignmentName VARCHAR(60),
+	assignmentName VARCHAR(100),
 	assignmentWeight DEC(5,2),
 	assignmentSequenceIndex INT(2),
 	moduleCode VARCHAR(10) NOT NULL,
 	FOREIGN KEY (moduleCode) REFERENCES Module(moduleCode),
 	PRIMARY KEY (assignmentID)
 );
-
--- CREATE TABLE Scenario (
--- 	scenarioID INT(8) NOT NULL AUTO_INCREMENT,
--- 	userID INT(6) NOT NULL,
--- 	FOREIGN KEY (userID) REFERENCES User(userID),
--- 	PRIMARY KEY (scenarioID)
--- );
 
 CREATE TABLE IF NOT EXISTS Grade (
 	gradeID INT(6) NOT NULL AUTO_INCREMENT,
