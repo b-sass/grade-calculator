@@ -14,7 +14,7 @@ $modules = array(
 
 // Get the user + which year he wants to update modules for
 $level = $_SESSION["moduleLevel"];
-$user = $_SESSION["loggedInUser"][0];
+$user = $_SESSION["loggedInUser"];
 
 // Get all of their modules for the year and delete them
 $currentModules = getUserModulesForLevel($user->userID, $level);

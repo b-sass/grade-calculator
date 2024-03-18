@@ -7,7 +7,7 @@ require_once("../model/data/dataAccess.php");
 session_start();
 
 $module = $_REQUEST["module"];
-$user = $_SESSION["loggedInUser"][0];
+$user = $_SESSION["loggedInUser"];
 $assignments = getAssignmentsForModule($module);
 
 

@@ -10,7 +10,7 @@ if (!isset($_SESSION["loggedInUser"])) {
 }
 else {
 
-	$user = $_SESSION["loggedInUser"][0];
+	$user = $_SESSION["loggedInUser"];
 	$degreeModules = array(
 				getUserModulesForLevel($user->userID, 4),
 				getUserModulesForLevel($user->userID, 5),

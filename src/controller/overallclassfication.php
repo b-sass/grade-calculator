@@ -8,7 +8,7 @@ if (!isset($_SESSION["loggedInUser"])) {
 	require_once("../controller/login.php");
 }
 else {
-	$user = $_SESSION["loggedInUser"][0];
+	$user = $_SESSION["loggedInUser"];
 
 	$level5modules = getUserModulesForLevel($user->userID, 5);
 	$level6modules = getUserModulesForLevel($user->userID, 6);

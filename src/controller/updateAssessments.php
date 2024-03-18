@@ -9,7 +9,7 @@ session_start();
 // Get grades for each assignment
 $grades = $_REQUEST["grade"];
 $ids = $_REQUEST["assignmentID"];
-$user = $_SESSION["loggedInUser"][0];
+$user = $_SESSION["loggedInUser"];
 
 foreach ($grades as $key=>$g) {
 	setOrAddGrade($user->userID, $ids[$key], $g);
