@@ -30,10 +30,10 @@
         }
 
         #assessments-container {
-            background-color: var(--light-gray);
+            background-color: var(--white);
             padding: 2rem;
             border-radius: 0.5rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 16px darkgray;
         }
 
         #assessments-title {
@@ -101,25 +101,22 @@
         </div>
 
         <!-- Repeat this block for each assessment -->
-        <form method="post" action="../controller/updateAssessments.php">
+        <form method="post" action="../controller/updateAssessments.php" class="text-center">
             <?php foreach ($assignments as $key=>$a): ?>
             <div class="row text-center mb-2 assessment-item" id="assessment-item-1">
                 <div class="col-md-6 align-self-center" id="assessment-name-col-1">
                     <input name="assignmentID[]" type="hidden" value="<?= $a->assignmentID ?>" />
                     <span class="lead" id="assessment-name-1"><?= $a->assignmentName ?></span>
                 </div>
-                <div class="grade-container col-md-6 row">
-                    <div class="col-md-6" id="current-grade">
-                        <p>Current: <?= $grades[$key]->obtainedGrade ?><p>
-                    </div>
                     <div class="col-md-6" id="assessment-grade-col-1">
-                        <input required name="grade[]" type="number" min="0" max="100" class="form-control assessment-input" id="assessment-input-1" placeholder="Enter Grade">
+                        <input name="grade[]" type="number" min="0" max="100" class="form-control assessment-input" id="assessment-input-1" placeholder="Current Grade: <?= $grades[$key]->obtainedGrade ?>">
                     </div>
-                </div>
+
             </div>
             <?php endforeach ?>
         <!-- ... more assessments -->
-            <input type="submit" />
+            <br>
+            <input type="submit" class="btn btn-primary" value="Save assessments"/>
         </form>
 
     </div>
