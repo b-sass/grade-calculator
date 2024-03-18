@@ -115,19 +115,18 @@
                     <div class="mb-3" id="signup-email-container">
                         <div class="form-text mb-2" id="signup-agreement">By signing up, you agree to the <a href="../controller/termsOfUse.php">Terms of use</a> and <a href="../controller/privacypolicy.php">Privacy Policy</a>.</div>
                         <label for="emailInput" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="emailInput" aria-describedby="emailHelp" required>
+                        <input type="email" name="email" class="form-control" id="emailInput" aria-describedby="emailHelp" maxlength="40" required>
                     </div>
-                    <div class="mb-3 d-none" id="signup-username-container">
+                    <div class="mb-3" id="signup-username-container">
                         <label for="usernameInput" class="form-label">Username</label>
                         <input type="text" name="username" class="form-control" id="usernameInput" required>
                     </div>
-                    <div class="mb-3 d-none" id="signup-password-container">
+                    <div class="mb-3" id="signup-password-container">
                         <label for="passwordInput" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="passwordInput" required>
+                        <input type="password" name="password" class="form-control" id="passwordInput" minlength="6" maxlength="64" required>
                     </div>
                     <div class="row align-items-center" id="signup-action-container">
-                        <a href="#" class="col btn btn-primary" id="continueButton">Continue</a>
-                        <input type="submit" class="col btn btn-primary d-none" id="signinButton" value="Sign In">
+                        <input type="submit" class="col btn btn-primary" id="signinButton" value="Sign In">
                     </div>
                 </form>
                 <h6 class="text-center mt-3" id="login-prompt">Already have an account? <a href="login.php">Log in</a></h6>
@@ -137,17 +136,6 @@
             </div>
         </div>
     </div>
-
-
-    <script>
-        document.getElementById('continueButton').addEventListener('click', function(event) {
-            // event.preventDefault(); // Prevent the default anchor behavior
-            document.getElementById('signup-username-container').classList.remove('d-none');
-            document.getElementById('signup-password-container').classList.remove('d-none');
-            document.getElementById('continueButton').classList.add('d-none');
-            document.getElementById('signinButton').classList.remove('d-none');
-        });
-    </script>
 
 
     <!-- Bootstrap ref (remove if using npm for customisation later on) -->
