@@ -104,12 +104,12 @@
                     <!-- Email field -->
                     <div class="mb-3" id="email-field-container">
                         <label for="emailInput" class="form-label" id="email-label">Email</label>
-                        <input required type="email" class="form-control" id="emailInput" name="email" aria-describedby="emailHelp" placeholder="Enter your email">
+                        <input type="email" class="form-control" id="emailInput" name="email" aria-describedby="emailHelp" placeholder="Enter a new email">
                     </div>
                     <!-- Username field -->
                     <div class="mb-3" id="password-field-container">
                         <label for="passwordInput" class="form-label" id="password-label">Password</label>
-                        <input required type="text" class="form-control" id="passwordInput" name="pass" placeholder="Enter your password">
+                        <input type="text" class="form-control" id="passwordInput" name="pass" placeholder="Enter a new password">
                     </div>
                     <!-- Course field -->
                     <div class="mb-3" id="course-field-container">
