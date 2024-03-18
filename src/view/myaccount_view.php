@@ -123,9 +123,14 @@
                     <div class="text-center" id="submit-button-container">
                         <button type="submit" class="btn btn-primary" id="account-submit">Update Account</button>
                     </div>
+                    <br>
                 </div>
             </div>
         </form>
+        <div class="text-center" id="logout-button-container">
+        <form method="post" action="../controller/accountManager.php">    
+            <button name="logout" type="submit" class="btn btn-primary" id="logout-submit">Log Out</button>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
