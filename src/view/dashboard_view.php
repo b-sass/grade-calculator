@@ -206,7 +206,6 @@
                                 <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?></div>
                             </div>
                             <div class="col-md-2">
-                                <?php print_r($moduleGrades[$i][$j]); ?>
                                 <div class="p-2 rounded text-center grade<?= $i ?>" id="module1-grade"><?= $moduleGrades[$i][$j] ?>%</div>
                             </div>
                             <div class="col-md-2">
