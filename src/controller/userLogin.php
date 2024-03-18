@@ -20,14 +20,16 @@ function login($pdo, $email, $pass) {
 	$sql = "SELECT * FROM User WHERE email = ? AND password = ?";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email, $pass]);
-	$profile = $stmt->fetchAll(PDO::FETCH_CLASS, "User"); // Will return null if the user doesn't exist
+	$stmt->setFetchMode(PDO::FETCH_CLASS, "User");
+	$user = $stmt->fetch(); // Will return null if the user doesn't exist
 	
-	if(sizeof($profile) == 1) {
+	if($user != null) {
 		// If they do, log in
-		$_SESSION["loggedInUser"] = $profile;
+		$_SESSION["loggedInUser"] = $user;
 		require_once("../controller/dashboard.php");
 	}
 	else {
+		$_SESSION["warning"] = "User with provided details does not exist.";
 		// If they don't, go to the signup page
 		require_once("../controller/signup.php");
 	}
@@ -38,18 +40,20 @@ function signup($pdo, $email, $username, $pass) {
 	$sql = "SELECT * FROM User WHERE email = ?";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute([$email]);
-	$profile = $stmt->fetchAll();
+	$stmt->setFetchMode(PDO::FETCH_CLASS, "User");
+	$user = $stmt->fetch();
 	
-	if(sizeof($profile) == 1) {
-		// If it does, go to the login page.
-		require_once("../controller/login.php");
+	$_SESSION["warning"] = "User with this email already exists";
+	// user does not exist
+	if($user == null) {
+		// Insert a user with the provided details to the Users table
+		$sql = "INSERT INTO User (email, username, password)
+		VALUES (?, ?, ?)";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute([$email, $username, $pass]);
+		$_SESSION["warning"] = "Account created, please login.";
 	}
 
-	// Insert a user with the provided details to the Users table
-	$sql = "INSERT INTO User (email, username, password)
-			VALUES (?, ?, ?)";
-	$stmt = $pdo->prepare($sql);
-	$stmt->execute([$email, $username, $pass]);
 	// Then, go back to login
 	require_once("../controller/login.php");
 }
