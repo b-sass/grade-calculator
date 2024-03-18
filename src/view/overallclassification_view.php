@@ -167,6 +167,19 @@
                 <div class="bg-light p-3 rounded text-center" id="level-5">
                     <h4 id="level-5-title">Level 5</h4>
                     <!-- Repeat this block four times for each module -->
+                    <?php if ($level5modules == null): 
+                    for ($i = 0; $i < 4; $i++): ?>
+                    <div class="mb-3" id="module-container-5">
+                        <div class="row g-3 align-items-center" id="module-row-5">
+                            <div class="col-md-10">
+                                <div class=" p-2 rounded" id="module-name-5">NOT YET CHOSEN</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class=" p-2 rounded text-center" id="module-grade-5">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endfor; else: ?>
                     <?php foreach ($level5modules as $key=>$m): ?>
                     <div class="mb-3" id="module-container-5">
                         <div class="row g-3 align-items-center" id="module-row-5">
@@ -179,6 +192,7 @@
                         </div>
                     </div>
                     <?php endforeach ?>
+                    <?php endif ?>
                     <!-- End of module block -->
                     <div class="mb-3" id="overall-weight-5-container">
                         <div class="row g-3 align-items-center mt-4" id="overall-weight-5">
@@ -195,6 +209,19 @@
                 <div class="bg-light p-3 rounded text-center" id="level-6">
                     <h4 id="level-6-title">Level 6</h4>
                     <!-- Repeat this block four times for each module -->
+                    <?php if ($level6modules == null): 
+                    for ($i = 0; $i < 4; $i++): ?>
+                    <div class="mb-3" id="module-container-6">
+                        <div class="row g-3 align-items-center" id="module-row-6">
+                            <div class="col-md-10">
+                                <div class=" p-2 rounded" id="module-name-6">NOT YET CHOSEN</div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class=" p-2 rounded text-center" id="module-grade-6">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endfor; else: ?>
                     <?php foreach ($level6modules as $key=>$m): ?>
                     <div class="mb-3" id="module-container-6">
                         <div class="row g-3 align-items-center" id="module-row-6">
@@ -206,7 +233,7 @@
                             </div>
                         </div>
                     </div>
-                    <?php endforeach ?>
+                    <?php endforeach; endif; ?>
                     <!-- End of module block -->
                     <div class="mb-3" id="overall-weight-6-container">
                         <div class="row g-3 align-items-center mt-4" id="overall-weight-6">
