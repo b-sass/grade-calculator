@@ -23,7 +23,7 @@ VALUES
 ("Topic 5: Relational Data (Interim Test 2)", 0.01, 13, "CI4250"),
 ("Topic 5: Relational Data (Final Test)", 0.12, 14, "CI4250"),
 ("Topic 6: Algorithms and Data Structures (Interim Test 1)", 0.01, 15, "CI4250"),
-("Topic 6: Algorithms and Data Structures (Final Test)", 0.12, 16, "CI4250"),
+("Topic 6: Algorithms and Data Structures (Final Test)", 0.07, 16, "CI4250"),
 ("Topic 7: Computing Systems (Interim Test 1)", 0.01, 17, "CI4250"),
 ("Topic 7: Computing Systems (Interim Test 2)", 0.01, 18, "CI4250"),
 ("Topic 7: Computing Systems (Final Test)", 0.12, 19, "CI4250"),
