@@ -21,18 +21,23 @@ grades5.forEach(grade => {
 	sum += moduleGrade;
 });
 sum -= worseModuleGrade / 2; // added
-grade = (Math.round(sum/3.5 * 0.2));
+grade = (sum/3.5) / 5 ;
 // grade = (Math.round(sum/4 * 0.2));
-weight20.textContent = grade+ "%";
+weight20.textContent = Math.round(grade)+ "%";
 finalGrade += grade;
 
 sum = 0;
+worseModuleGrade = 100;
 grades6.forEach(grade => {
-	sum += parseFloat(grade.textContent);
+	moduleGrade = parseFloat(grade.textContent);
+	if (moduleGrade < worseModuleGrade) {
+		worseModuleGrade = moduleGrade;
+	}
+	sum += moduleGrade;
 });
-
-grade = (Math.round(sum/4 * 0.8 * 100) / 100);
-weight80.textContent = grade+ "%";
+sum -= worseModuleGrade / 2;
+grade = (sum/3.5) * 0.8
+weight80.textContent = Math.round(grade)+ "%";
 finalGrade += grade;
 
 finalPercentage.textContent = finalGrade + "%";

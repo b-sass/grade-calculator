@@ -197,7 +197,7 @@
                     <div class="mb-3" id="overall-weight-5-container">
                         <div class="row g-3 align-items-center mt-4" id="overall-weight-5">
                             <div class="col-md-12">
-                                <h4 id="overall-weight-title-5">Overall Weight (20%)</h4>
+                                <h4 id="overall-weight-title-5">Weighted Average of best 105 credits (20%)</h4>
                                 <div class="p-2 rounded" id="overall-weight-value-5">%</div>
                             </div>
                         </div>
@@ -238,7 +238,7 @@
                     <div class="mb-3" id="overall-weight-6-container">
                         <div class="row g-3 align-items-center mt-4" id="overall-weight-6">
                             <div class="col-md-12">
-                                <h4 id="overall-weight-title-6">Overall Weight (80%)</h4>
+                                <h4 id="overall-weight-title-6">Weighted Average of best 105 credits (80%)</h4>
                                 <div class="p-2 rounded" id="overall-weight-value-6">%</div>
                             </div>
                         </div>
