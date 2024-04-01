@@ -109,7 +109,7 @@
                     <!-- Username field -->
                     <div class="mb-3" id="password-field-container">
                         <label for="passwordInput" class="form-label" id="password-label">Password</label>
-                        <input type="text" class="form-control" id="passwordInput" name="pass" placeholder="Enter a new password">
+                        <input type="text" class="form-control" id="passwordInput" minlength="8" maxlength="64" name="pass" placeholder="Enter a new password">
                     </div>
                     <!-- Course field -->
                     <div class="mb-3" id="course-field-container">
