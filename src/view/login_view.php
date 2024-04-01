@@ -76,6 +76,7 @@
         #forgot-password-link a {
             color: var(--secondary-color);
             text-decoration: none;
+            display: none; /* IF YOU'RE WONDERING WHY NO FORGOT PASSWORD */
         }
 
         #forgot-username-link a:hover,

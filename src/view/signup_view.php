@@ -123,7 +123,7 @@
                     </div>
                     <div class="mb-3" id="signup-password-container">
                         <label for="passwordInput" class="form-label">Password</label>
-                        <input type="password" name="password" class="form-control" id="passwordInput" minlength="6" maxlength="64" required>
+                        <input type="password" name="password" class="form-control" id="passwordInput" minlength="8" maxlength="64" required>
                     </div>
                     <div class="row align-items-center" id="signup-action-container">
                         <input type="submit" class="col btn btn-primary" id="signinButton" value="Sign In">
