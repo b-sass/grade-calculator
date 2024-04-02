@@ -29,5 +29,9 @@ else {
 	}
 	// TODO: find a better way of doing this
 
+	if (!isset($editedLevel)) {
+		$editedLevel = 4;
+	}
+
 	require_once ("../view/dashboard_view.php");
 }

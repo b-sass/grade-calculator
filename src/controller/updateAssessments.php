@@ -16,5 +16,6 @@ foreach ($newGrades as $key=>$g) {
 		setOrAddGrade($user->userID, $ids[$key], $g);
 	}
 }
+$editedLevel = getLevelForAssignment($ids[0])->moduleLevel; // it's probably a stupid way to do it but hey
 
 require_once("../controller/dashboard.php");

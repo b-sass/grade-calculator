@@ -102,6 +102,12 @@ function getModuleGradesForUser($userID, $moduleCode) {
     $grades = $statement->fetchAll(PDO::FETCH_CLASS, "Grade");
     return $grades;
 }
+function getLevelForAssignment($assignmentID) {
+    global $pdo;
+    $statement = $pdo->prepare("SELECT m.moduleLevel FROM Module m, Assignment a WHERE m.moduleCode = a.moduleCode AND a.assignmentID = ?");
+    $statement->execute([$assignmentID]);
+    return $statement->fetchAll(PDO::FETCH_OBJ)[0]; // hope I don't summon an angry paul
+}
 function getAssignmentsForModule($moduleCode) {
     global $pdo;
     $sql = "SELECT * FROM Assignment WHERE moduleCode = ?";

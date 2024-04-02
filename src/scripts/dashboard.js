@@ -2,8 +2,12 @@ let buttons = document.querySelectorAll(".level-button");
 let modules = document.querySelectorAll(".modules");
 let currentTab = document.querySelector("#currentTab");
 
-console.log(buttons);
-console.log(modules);
+
+let levelToShow = parseInt(document.getElementById("editedLevel").textContent);
+
+// console.log(buttons);
+// console.log(modules);
+
 buttons.forEach((button, index) => {
 	button.addEventListener('click', () => {
 		// Set styling for all buttons
@@ -28,6 +32,7 @@ buttons.forEach((button, index) => {
 });
 
 function refreshStats(index) {
+	console.log("refresh stats: index is " + index);
 	// Percentage
 	let sum = 0;
 	let percentage = document.querySelector("#percentage-value");
@@ -49,20 +54,20 @@ function refreshStats(index) {
 
 // copied from dataAccess
 function getLetter(grade) {
-	if (grade >= 85) return "A+";
-	else if (grade >= 75) return "A";
-	else if (grade >= 70) return "A-";
-	else if (grade >= 67) return "B+";
-	else if (grade >= 63) return "B";
-	else if (grade >= 60) return "B-";
-	else if (grade >= 57) return "C+";
-	else if (grade >= 53) return "C";
-	else if (grade >= 50) return "C-";
-	else if (grade >= 47) return "D+";
-	else if (grade >= 43) return "D";
-	else if (grade >= 40) return "D-";
-	else if (grade >= 35) return "FM";
-	else return "F";
+	if (grade >= 85) return "A+"; // I'm sorry I just love that it looks dumb but kind of isn't
+	if (grade >= 75) return "A";
+	if (grade >= 70) return "A-";
+	if (grade >= 67) return "B+";
+	if (grade >= 63) return "B";
+	if (grade >= 60) return "B-";
+	if (grade >= 57) return "C+";
+	if (grade >= 53) return "C";
+	if (grade >= 50) return "C-";
+	if (grade >= 47) return "D+";
+	if (grade >= 43) return "D";
+	if (grade >= 40) return "D-";
+	if (grade >= 35) return "FM";
+	return "F";
 }
 
 function getClass(grade) {
@@ -72,4 +77,4 @@ function getClass(grade) {
 	else return "3rd";
 }
 // click the button when page loads
-buttons[0].click();
+buttons[levelToShow - 4].click();

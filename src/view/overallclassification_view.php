@@ -160,7 +160,6 @@
 
     <div class="container my-3" id="overall-classification-container">
         <h2 class="text-center mb-4" id="overall-classification-title">Overall Classification</h2>
-
         <div class="row" id="level-rows">
 
             <div class="col-xl-6" id="level-5-container">
@@ -247,7 +246,6 @@
             </div>
 
         </div>
-
         <div class="row mt-4" id="overall-container">
 
             <h2 class="text-center mb-4" id="overall-title">Overall</h2>
@@ -274,9 +272,17 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
+        <div class="row">
+            <p class="fst-italic">
+                Your overall grade is calculated using your level 5 and level 6 module averages.
+                Level 5 grades only account for 20% of the final calculation, and is therefore
+                weighted by dividing it by a factor of 5. Similarly, level 6 accounts for 80% of
+                the final classification and is multiplied by 4/5. Note that for both levels, only the
+                best 105 (out of 120) of each year's credits are taken into account, bringing your yearly
+                grades up. The two weighted averages are then added up and result in your final grade and classification.
+            </p>
+        </div>
     </div>
 
 

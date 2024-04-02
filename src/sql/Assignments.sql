@@ -1,13 +1,9 @@
 INSERT INTO Assignment (assignmentName, assignmentWeight, assignmentSequenceIndex, moduleCode)
 VALUES 
--- Programming 1
--- ("Portfolio of in class activities",1,1,"CI4105"),
 ("Thinking Like a Programmer (Introduction)", 0.25, 1, "CI4105"),
 ("Introduction to Javascript (Unit 2)", 0.25, 2, "CI4105"),
 ("Introduction to Object Oriented Programming in Java (Unit 3)", 0.25, 3, "CI4105"),
 ("Further OO (Unit 4)", 0.25, 4, "CI4105"),
--- Computing fundamentals
--- ("Portfolio of in-class activities",1,1,"CI4250"),
 ("Topic 1: Number Systems and Boolean Logic (Interim Test)", 0.01, 1, "CI4250"),
 ("Topic 1: Number Systems and Boolean Logic (Final Test)", 0.07, 2, "CI4250"),
 ("Topic 2: Number and Character Representations (Interim Test 1)", 0.01, 3, "CI4250"),

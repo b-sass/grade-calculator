@@ -39,6 +39,7 @@ sum -= worseModuleGrade / 2;
 grade = (sum/3.5) * 0.8
 weight80.textContent = Math.round(grade)+ "%";
 finalGrade += grade;
+finalGrade = Math.round(finalGrade);
 
 finalPercentage.textContent = finalGrade + "%";
 finalClass.textContent = getClass(finalGrade);

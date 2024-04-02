@@ -28,5 +28,7 @@ foreach ($modules as $m) {
 	addModuleForUser($user->userID, $m);
 };
 
+$editedLevel = $level;
+
 // Go back to the dashboard
 require_once("../controller/dashboard.php");
