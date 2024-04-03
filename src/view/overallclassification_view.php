@@ -156,7 +156,8 @@
 
 <body>
 
-    <?php include "../view/navbar.php"; ?>
+    <?php include "../view/navbar.php";
+        $missingGrades = false ?>
 
     <div class="container my-3" id="overall-classification-container">
         <h2 class="text-center mb-4" id="overall-classification-title">Overall Classification</h2>
@@ -179,14 +180,20 @@
                         </div>
                     </div>
                     <?php endfor; else: ?>
-                    <?php foreach ($level5modules as $key=>$m): ?>
+                    <?php foreach ($level5modules as $key=>$m):
+                        $m->setIsFilled($user);
+                        $asterisk = "" ;
+                        if (!$m->isFilled) {
+                            $asterisk = "*";
+                            $missingGrades = true;
+                        } ?>
                     <div class="mb-3" id="module-container-5">
                         <div class="row g-3 align-items-center" id="module-row-5">
                             <div class="col-md-10">
-                                <div class="p-2 rounded" id="module-name-5"><?= $m->moduleName ?></div>
+                                <div class="p-2 rounded" id="module-name-5"><?= $m->moduleName ?><?= $asterisk ?></div>
                             </div>
                             <div class="col-md-2">
-                                <div class="p-2 rounded text-center" id="module-grade-5"><?= $level5grades[$key] ?>%</div>
+                                <div class="p-2 rounded text-center <?= $asterisk ? "bg-danger" : "" ?>" id="module-grade-5"><?= $level5grades[$key] ?>%</div>
                             </div>
                         </div>
                     </div>
@@ -221,14 +228,20 @@
                         </div>
                     </div>
                     <?php endfor; else: ?>
-                    <?php foreach ($level6modules as $key=>$m): ?>
+                    <?php foreach ($level6modules as $key=>$m):
+                        $m->setIsFilled($user);
+                        $asterisk = "" ;
+                        if (!$m->isFilled) {
+                            $asterisk = "*";
+                            $missingGrades = true;
+                        } ?>
                     <div class="mb-3" id="module-container-6">
                         <div class="row g-3 align-items-center" id="module-row-6">
                             <div class="col-md-10">
-                                <div class=" p-2 rounded" id="module-name-6"><?= $m->moduleName ?></div>
+                                <div class=" p-2 rounded" id="module-name-6"><?= $m->moduleName ?><?= $asterisk ?></div>
                             </div>
                             <div class="col-md-2">
-                                <div class=" p-2 rounded text-center" id="module-grade-6"><?= $level6grades[$key] ?>%</div>
+                                <div class=" p-2 rounded text-center <?= $asterisk ? "bg-danger" : "" ?>" id="module-grade-6"><?= $level6grades[$key] ?>%</div>
                             </div>
                         </div>
                     </div>
@@ -245,6 +258,12 @@
                 </div>
             </div>
 
+        </div>
+        <div class="row <?= $missingGrades ? "" : "d-none" ?>">
+            <p class="text-danger fw-bolder fst-italic">
+                Careful: Some grades have not been entered. Make sure to go back to the dashboard and input all assessments
+                to get an accurate grade calculation. The classification shown below shows results with currently entered grades.
+            </p>
         </div>
         <div class="row mt-4" id="overall-container">
 

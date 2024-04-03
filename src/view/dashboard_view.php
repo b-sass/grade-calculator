@@ -197,16 +197,22 @@
                 <div class="bg-light p-3 rounded" id="modules-section">
                     <h4 id="modules-title" class="mb-3">Modules</h4>
 
-                    <?php foreach ($degreeModules as $i=>$yearModule): ?>
+                    <?php $incompleteGrades = false;
+                        foreach ($degreeModules as $i=>$yearModule): ?>
                     <div class="mb-3 modules" id="module-list-<?= $i+4 ?>">
                         <!-- Repeat this block for each module -->
                         <?php foreach ($yearModule as $j=>$m):
                             $moduleGradePercent = $moduleGrades[$i][$j];
-                            $moduleGradeLetter = getLetterGradeFromNumber($moduleGradePercent); ?>
+                            $moduleGradeLetter = getLetterGradeFromNumber($moduleGradePercent);
+                            $missingGradesAsterisk = "";
+                            // if(!$m->isFilled) {
+                            //     $missingGradesAsterisk = "*";
+                            //     $incompleteGrades = true; }
+                            ?>
                         <form method="get" action="../controller/assessment.php" class="row g-3 align-items-center module-item" id="module<?= $j+1 ?>">
                             <div class="col-md-8">
                                 <input name="module" type="hidden" value=<?= $m->moduleCode ?>>
-                                <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?></div>
+                                <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?><?= $missingGradesAsterisk ?></div>
                             </div>
                             <div class="col-md-2">
                                 <div class="p-2 rounded text-center grade<?= $i ?>" id="module1-grade"><?= $moduleGradePercent ?>% (<?= $moduleGradeLetter ?>)</div>

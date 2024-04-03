@@ -26,6 +26,6 @@ else {
 		getCurrentModuleGrade($user->userID, $level6modules[2]->moduleCode),
 		getCurrentModuleGrade($user->userID, $level6modules[3]->moduleCode)
 	);
-
+	
 	require_once "../view/overallclassification_view.php";
 }

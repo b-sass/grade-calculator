@@ -8,13 +8,6 @@ $dsn = "mysql:host=". $host .";port=3306;dbname=". $dbname;
 $pdo = new PDO($dsn, $user, $pass);
 
 // Grades
-function calculateYearClassification($userId)
-{
-    // TODO: Should return a String like A+, B- etc.
-    // Corresponding to what the user got for all
-    // Their modules on the current (selected) year.
-}
-// grade is an int/float between 0 and 100
 function isValidGrade($grade) {
     if (!is_numeric($grade)) {
         return false;
@@ -92,6 +85,22 @@ function getUserModulesForLevel($userID, $level) {
     $stmt->execute([$userID, $level]);
     $modules = $stmt->fetchAll(PDO::FETCH_CLASS, "Module");
     return $modules;
+}
+function getNormalAssignmentCountForModule($moduleCode) {
+    global $pdo;
+    $statement = $pdo->prepare("SELECT COUNT(*) as assignmentCount FROM Assignment WHERE moduleCode = ?");
+    $statement->execute([$moduleCode]);
+    return $statement->fetchAll(PDO::FETCH_OBJ)[0];
+}
+function getCurrentAssignmentCount($moduleCode, $userID) {
+    global $pdo;
+    $sql = "SELECT COUNT(g.assignmentID) as filledCount FROM Grade g, Assignment a
+        WHERE g.assignmentID IN (SELECT assignmentID from Assignment WHERE moduleCode = ?)
+        AND g.assignmentID = a.assignmentID
+        AND g.userID = ?";
+    $statement = $pdo->prepare($sql);
+    $statement->execute([$moduleCode, $userID]);
+    return $statement->fetchAll(PDO::FETCH_OBJ)[0];
 }
 
 function getModuleGradesForUser($userID, $moduleCode) {
