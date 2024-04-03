@@ -2,12 +2,9 @@
 class dataAccessObject {
     private static $instance;
     private $pdo;
-    private function __construct()
-    {}
-    public static function getInstance()
-    {
-        if (!isset(self::$instance))
-        {
+    private function __construct() {}
+    public static function getInstance() {
+        if (!isset(self::$instance)) {
             global $host, $dbname, $user, $pass;
             $dsn = "mysql:host=$host;port=3306;dbname=$dbname";
             self::$instance = new dataAccessObject();
@@ -15,9 +12,7 @@ class dataAccessObject {
         }
         return self::$instance;
     }
-    public function getPdo()
-    {
+    public function getPdo() {
         return $this->pdo;
     }
 }
-?>

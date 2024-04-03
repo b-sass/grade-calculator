@@ -11,4 +11,3 @@
 
 // dbSecrets.php will be ignored by git and should
 // not be pushed to the Github repo.
-?>
