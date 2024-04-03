@@ -17,15 +17,14 @@ else {
 				getUserModulesForLevel($user->userID, 6)
 				);
 
-	// Hack
 	foreach ($degreeModules as $i=>&$modules) {
 		// Get all modules for each year
 		for ($j = 0; $j < count($modules); $j++) {
+			// Add each module in a year to a 2D array
 			$modules[$j]->setIsFilled($user);
 			$moduleGrades[$i][$j] = getCurrentModuleGrade($user->userID,$modules[$j]->moduleCode);
 		}
 	}
-	// TODO: find a better way of doing this
 
 	if (!isset($editedLevel)) {
 		$editedLevel = 4;
@@ -33,6 +32,3 @@ else {
 
 	require_once ("../view/dashboard_view.php");
 }
-			// Add each module in a year to a 2D array because
-			// its easier to parse it later in the view
-			// sue me

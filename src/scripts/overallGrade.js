@@ -20,9 +20,8 @@ grades5.forEach(grade => {
 	}
 	sum += moduleGrade;
 });
-sum -= worseModuleGrade / 2; // added
+sum -= worseModuleGrade / 2;
 grade = (sum/3.5) / 5 ;
-// grade = (Math.round(sum/4 * 0.2));
 weight20.textContent = Math.round(grade)+ "%";
 finalGrade += grade;
 
@@ -49,5 +48,6 @@ function getClass(grade) {
 	if (grade >= 70) return "1st";
 	else if (grade >= 60) return "2.1";
 	else if (grade >= 50) return "2.2";
-	else return "3rd";
+	else if (grade >= 40) return "3rd";
+	else return "Fail";
 }

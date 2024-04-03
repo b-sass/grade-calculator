@@ -1,11 +1,8 @@
 <?php 
 
-require_once(dirname(__FILE__) ."/dbSecrets.php");
-
-
-$dsn = "mysql:host=". $host .";port=3306;dbname=". $dbname;
-
-$pdo = new PDO($dsn, $user, $pass);
+require_once(dirname(__FILE__)."/dbSecrets.php");
+require_once(dirname(__FILE__)."/dataAccessObject.php");
+$pdo = dataAccessObject::getInstance()->getPdo();
 
 // Grades
 function isValidGrade($grade) {
@@ -15,9 +12,6 @@ function isValidGrade($grade) {
     return ($grade >= 0 && $grade<= 100);
 }
 function setOrAddGrade($userID, $assignmentID, $grade) {
-    // if (!isValidGrade($grade)) {
-    //     return 1;
-    // }
     global $pdo;
     $sql = "SELECT * FROM Grade WHERE assignmentID = ? AND userID = ?";
     $getGradeStatement = $pdo->prepare($sql);
@@ -59,7 +53,6 @@ function getCurrentModuleGrade($userID, $moduleCode) {
         AND Assignment.moduleCode = ?");
     $getModuleGradesStatement->execute([$userID, $moduleCode]);
     $grades = $getModuleGradesStatement->fetchAll(PDO::FETCH_OBJ);
-    // get an array of OBJECTS that have assignmentWeight and obtainedGrade
     $totalGrade = 0;
     $totalWeight = 0;
     foreach ($grades as $grade) {
@@ -115,7 +108,7 @@ function getLevelForAssignment($assignmentID) {
     global $pdo;
     $statement = $pdo->prepare("SELECT m.moduleLevel FROM Module m, Assignment a WHERE m.moduleCode = a.moduleCode AND a.assignmentID = ?");
     $statement->execute([$assignmentID]);
-    return $statement->fetchAll(PDO::FETCH_OBJ)[0]; // hope I don't summon an angry paul
+    return $statement->fetchAll(PDO::FETCH_OBJ)[0];
 }
 function getAssignmentsForModule($moduleCode) {
     global $pdo;

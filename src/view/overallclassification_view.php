@@ -259,12 +259,14 @@
             </div>
 
         </div>
-        <div class="row <?= $missingGrades ? "" : "d-none" ?>">
-            <p class="text-danger fw-bolder fst-italic">
-                Careful: Some grades have not been entered. Make sure to go back to the dashboard and input all assessments
-                to get an accurate grade calculation. The classification shown below shows results with currently entered grades.
-            </p>
-        </div>
+        <?php if ($missingGrades): ?>
+            <div class="row">
+                <p class="text-danger fw-bolder fst-italic">
+                    Careful: Some grades have not been entered. Make sure to go back to the dashboard and input all assessments
+                    to get an accurate grade calculation. The classification shown below shows results with currently entered grades.
+                </p>
+            </div>
+        <?php endif ?>
         <div class="row mt-4" id="overall-container">
 
             <h2 class="text-center mb-4" id="overall-title">Overall</h2>
