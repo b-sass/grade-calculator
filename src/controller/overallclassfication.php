@@ -12,6 +12,12 @@ else {
 
 	$level5modules = getUserModulesForLevel($user->userID, 5);
 	$level6modules = getUserModulesForLevel($user->userID, 6);
+	foreach ($level5modules as &$module) {
+		$module->setIsFilled($user);
+	}
+	foreach ($level6modules as &$module) {
+		$module->setIsFilled($user);
+	}
 
 	$level5grades = array(
 					getCurrentModuleGrade($user->userID, $level5modules[0]->moduleCode),
@@ -21,10 +27,10 @@ else {
 	);
 
 	$level6grades = array(
-		getCurrentModuleGrade($user->userID, $level6modules[0]->moduleCode),
-		getCurrentModuleGrade($user->userID, $level6modules[1]->moduleCode),
-		getCurrentModuleGrade($user->userID, $level6modules[2]->moduleCode),
-		getCurrentModuleGrade($user->userID, $level6modules[3]->moduleCode)
+					getCurrentModuleGrade($user->userID, $level6modules[0]->moduleCode),
+					getCurrentModuleGrade($user->userID, $level6modules[1]->moduleCode),
+					getCurrentModuleGrade($user->userID, $level6modules[2]->moduleCode),
+					getCurrentModuleGrade($user->userID, $level6modules[3]->moduleCode)
 	);
 	
 	require_once "../view/overallclassification_view.php";

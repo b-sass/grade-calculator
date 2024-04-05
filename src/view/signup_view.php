@@ -126,7 +126,7 @@
                         <input type="password" name="password" class="form-control" id="passwordInput" minlength="8" maxlength="64" required>
                     </div>
                     <div class="row align-items-center" id="signup-action-container">
-                        <input type="submit" class="col btn btn-primary" id="signinButton" value="Sign In">
+                        <input type="submit" class="col btn btn-primary" id="signinButton" value="Sign Up">
                     </div>
                 </form>
                 <h6 class="text-center mt-3" id="login-prompt">Already have an account? <a href="login.php">Log in</a></h6>

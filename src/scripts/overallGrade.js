@@ -38,13 +38,11 @@ sum -= worseModuleGrade / 2;
 grade = (sum/3.5) * 0.8
 weight80.textContent = Math.round(grade)+ "%";
 finalGrade += grade;
+finalClass.textContent = getClassification(finalGrade);
 finalGrade = Math.round(finalGrade);
-
 finalPercentage.textContent = finalGrade + "%";
-finalClass.textContent = getClass(finalGrade);
 
-
-function getClass(grade) {
+function getClassification(grade) {
 	if (grade >= 70) return "1st";
 	else if (grade >= 60) return "2.1";
 	else if (grade >= 50) return "2.2";

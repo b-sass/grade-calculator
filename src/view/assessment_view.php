@@ -100,24 +100,22 @@
             </div>
         </div>
 
-        <!-- Repeat this block for each assessment -->
         <form method="post" action="../controller/updateAssessments.php" class="text-center">
+            <!-- Repeat this block for each assessment -->
             <?php foreach ($assignments as $key=>$a): 
                 $placeholder = $currentGrades[$key]->obtainedGrade != "" ? "Current Grade: " . $currentGrades[$key]->obtainedGrade : "No recorded grade"; ?>
-            <div class="row text-center mb-2 assessment-item" id="assessment-item-1">
-                <div class="col-md-6 align-self-center" id="assessment-name-col-1">
-                    <input name="assignmentID[]" type="hidden" value="<?= $a->assignmentID ?>" />
-                    <span class="lead" id="assessment-name-1"><?= $a->assignmentName ?> (<?= $a->assignmentWeight * 100 ?>%)</span>
-                </div>
+                <div class="row text-center mb-2 assessment-item" id="assessment-item-1">
+                    <div class="col-md-6 align-self-center" id="assessment-name-col-1">
+                        <input name="assignmentID[]" type="hidden" value="<?= $a->assignmentID ?>" />
+                        <span class="lead" id="assessment-name-1"><?= $a->assignmentName ?> (<?= $a->assignmentWeight * 100 ?>%)</span>
+                    </div>
                     <div class="col-md-6" id="assessment-grade-col-1">
                         <input name="grade[]" type="number" min="0" max="100" class="form-control assessment-input" id="assessment-input-1" placeholder="<?= $placeholder ?>">
                     </div>
-
-            </div>
+                </div>
             <?php endforeach ?>
-        <!-- ... more assessments -->
             <br>
-            <input type="submit" class="btn btn-primary" value="Save assessments"/>
+            <input type="submit" class="btn btn-primary" value="Save Assessments"/>
         </form>
 
     </div>

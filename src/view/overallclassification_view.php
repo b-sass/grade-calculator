@@ -181,7 +181,6 @@
                     </div>
                     <?php endfor; else: ?>
                     <?php foreach ($level5modules as $key=>$m):
-                        $m->setIsFilled($user);
                         $asterisk = "" ;
                         if (!$m->isFilled) {
                             $asterisk = "*";
@@ -229,7 +228,6 @@
                     </div>
                     <?php endfor; else: ?>
                     <?php foreach ($level6modules as $key=>$m):
-                        $m->setIsFilled($user);
                         $asterisk = "" ;
                         if (!$m->isFilled) {
                             $asterisk = "*";

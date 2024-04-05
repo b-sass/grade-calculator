@@ -4,6 +4,35 @@ require_once(dirname(__FILE__)."/dbSecrets.php");
 require_once(dirname(__FILE__)."/dataAccessObject.php");
 $pdo = dataAccessObject::getInstance()->getPdo();
 
+function login($email, $pass) {
+    global $pdo;
+	// returns the logged in customer or null if provided invalid credentials
+	$sql = "SELECT * FROM User WHERE email = ? AND password = ?";
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute([$email, $pass]);
+	$stmt->setFetchMode(PDO::FETCH_CLASS, "User");
+	$user = $stmt->fetch();
+	return $user;
+}
+function signup($email, $username, $pass) {
+    // return true or false depending on successful or failed signup (if email exists already).
+    global $pdo;
+	$sql = "SELECT * FROM User WHERE email = ?";
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute([$email]);
+	$stmt->setFetchMode(PDO::FETCH_CLASS, "User");
+	$user = $stmt->fetch();
+	if ($user) { // email is already taken
+		return false;
+	}
+    // email is not taken: create new account
+	$sql = "INSERT INTO User (email, username, password)
+	VALUES (?, ?, ?)";
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute([$email, $username, $pass]);
+	return true;
+}
+
 // Grades
 function isValidGrade($grade) {
     if (!is_numeric($grade)) {
@@ -11,7 +40,7 @@ function isValidGrade($grade) {
     }
     return ($grade >= 0 && $grade<= 100);
 }
-function setOrAddGrade($userID, $assignmentID, $grade) {
+function updateOrAddGrade($userID, $assignmentID, $grade) {
     global $pdo;
     $sql = "SELECT * FROM Grade WHERE assignmentID = ? AND userID = ?";
     $getGradeStatement = $pdo->prepare($sql);
@@ -21,11 +50,13 @@ function setOrAddGrade($userID, $assignmentID, $grade) {
     if ($gradeObject) {
         // update obtained grade
         $gradeID = $gradeObject->gradeID;
-        $pdo->query("UPDATE Grade SET obtainedGrade = $grade WHERE gradeID = $gradeID");
+        $statement = $pdo->prepare("UPDATE Grade SET obtainedGrade = ? WHERE gradeID = ?");
+        $statement->execute([$grade, $gradeID]);
         return 0;
     }
     // else: create new grade record
-    $createGradeStatement = $pdo->prepare("INSERT INTO Grade (assignmentID, userID, obtainedGrade) VALUES (?, ?, ?)");
+    $sql = "INSERT INTO Grade (assignmentID, userID, obtainedGrade) VALUES (?, ?, ?)";
+    $createGradeStatement = $pdo->prepare($sql);
     $createGradeStatement->execute([$assignmentID, $userID, $grade]);
     return 0;
 }
@@ -54,7 +85,6 @@ function getCurrentModuleGrade($userID, $moduleCode) {
     $getModuleGradesStatement->execute([$userID, $moduleCode]);
     $grades = $getModuleGradesStatement->fetchAll(PDO::FETCH_OBJ);
     $totalGrade = 0;
-    $totalWeight = 0;
     foreach ($grades as $grade) {
         $totalGrade += $grade->obtainedGrade * $grade->assignmentWeight;
     }

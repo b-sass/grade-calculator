@@ -13,9 +13,9 @@ $user = $_SESSION["loggedInUser"];
 
 foreach ($newGrades as $key=>$g) {
 	if ($g != null) {
-		setOrAddGrade($user->userID, $ids[$key], $g);
+		updateOrAddGrade($user->userID, $ids[$key], $g);
 	}
 }
-$editedLevel = getLevelForAssignment($ids[0])->moduleLevel; // it's probably a stupid way to do it but hey
+$editedLevel = getLevelForAssignment($ids[0])->moduleLevel;
 
 require_once("../controller/dashboard.php");

@@ -207,7 +207,7 @@
                             ?>
                         <form method="get" action="../controller/assessment.php" class="row g-3 align-items-center module-item" id="module<?= $j+1 ?>">
                             <div class="col-md-8">
-                                <input name="module" type="hidden" value=<?= $m->moduleCode ?>>
+                                <input name="moduleCode" type="hidden" value=<?= $m->moduleCode ?>>
                                 <div class="p-2 rounded" id="module1-name"><?= $m->moduleName ?></div>
                             </div>
                             <div class="col-md-2">
