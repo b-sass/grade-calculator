@@ -112,6 +112,10 @@
             background-color: var(--bright-blue);
             border-color: var(--bright-blue);
         }
+
+        #year-modules-title:disabled:hover {
+
+        }
     </style>
 </head>
 
@@ -163,6 +167,7 @@
                 </select>
             </div>
             <button type="submit" form="modules-form" class="btn btn-primary" id="update-modules-button">Update</button>
+            <p id="error" style="display: none; color: red;">You must choose Individual Project as one of your modules</p>
         </form>
 
         <a href="../controller/dashboard.php" id="back-link">

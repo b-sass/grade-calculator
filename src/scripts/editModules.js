@@ -1,4 +1,7 @@
 let menus = document.querySelectorAll("select");
+let level = document.querySelector("#year-modules-title").textContent.slice(5,6);
+let updateButton = document.querySelector("#update-modules-button");
+let error = document.querySelector("#error");
 
 // Attach the 'change' event listener to each select element
 menus.forEach(menu => {
@@ -30,6 +33,23 @@ function hideOption() {
             }
         }
     });
+
+    // Force individual project as one of level 6 modules
+    if(level == 6 && selectedValues.includes("CI6600")) {
+        console.log("includes");
+        updateButton.disabled = false;
+        error.style.display = "none";
+    }
+    // Skip this if level is not 6
+    else if(level != 6) {
+        console.log("level not 6");
+        updateButton.disabled = false;
+    }
+    else {
+        console.log("no");
+        updateButton.disabled = true;
+        error.style.display = "inline";
+    }
 }
 
 // Initial call to set the correct display states based on the default selected options
