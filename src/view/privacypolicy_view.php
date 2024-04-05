@@ -5,7 +5,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../css/Main-SCSS-Syling/styles.scss" type="text/css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <style>
         body {
@@ -208,7 +207,7 @@
                     estimate general location and other technographics such as connection speed, whether you have visited the website in
                     a shared location, and type of the device used to visit the website. They may aggregate information about our
                     advertising and what you see on the website and then provide auditing, research and reporting for us and our
-                    advertisers.   We may also disclose personal and non-personal information about you to government or law enforcement
+                    advertisers. We may also disclose personal and non-personal information about you to government or law enforcement
                     officials or private parties as we, in our sole discretion, believe necessary or appropriate in order to respond to
                     claims, legal process (including subpoenas), to protect our rights and interests or those of a third party, the
                     safety of the public or any person, to prevent or stop any illegal, unethical, or legally actionable activity, or to
